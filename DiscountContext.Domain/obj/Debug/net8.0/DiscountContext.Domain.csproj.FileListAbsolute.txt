@@ -1,0 +1,15 @@
+C:\DevSam\RepublicasApp\DiscountContext.Domain\bin\Debug\net8.0\DiscountContext.Domain.deps.json
+C:\DevSam\RepublicasApp\DiscountContext.Domain\bin\Debug\net8.0\DiscountContext.Domain.dll
+C:\DevSam\RepublicasApp\DiscountContext.Domain\bin\Debug\net8.0\DiscountContext.Domain.pdb
+C:\DevSam\RepublicasApp\DiscountContext.Domain\bin\Debug\net8.0\DiscountContext.Shared.dll
+C:\DevSam\RepublicasApp\DiscountContext.Domain\bin\Debug\net8.0\DiscountContext.Shared.pdb
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.csproj.AssemblyReference.cache
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.AssemblyInfoInputs.cache
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.AssemblyInfo.cs
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.csproj.CoreCompileInputs.cache
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.csproj.CopyComplete
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.dll
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\refint\DiscountContext.Domain.dll
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.pdb
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\ref\DiscountContext.Domain.dll
