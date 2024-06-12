@@ -6,11 +6,11 @@ namespace DiscountContext.Domain.Entities;
 
 public class Republic : Entity
 {
-    public Republic(string name, Address address, IList<Student> students)
+    public Republic(string name, Address address)
     {
         Name = name;
         Address = address;
-        _students = students;
+        _students = new List<Student>();
 
         AddNotifications(address);
         AddNotifications(new Contract<Republic>()

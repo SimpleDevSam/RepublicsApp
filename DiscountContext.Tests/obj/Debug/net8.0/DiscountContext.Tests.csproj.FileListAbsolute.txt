@@ -115,3 +115,4 @@ C:\DevSam\RepublicasApp\DiscountContext.Tests\obj\Debug\net8.0\refint\DiscountCo
 C:\DevSam\RepublicasApp\DiscountContext.Tests\obj\Debug\net8.0\DiscountContext.Tests.pdb
 C:\DevSam\RepublicasApp\DiscountContext.Tests\obj\Debug\net8.0\DiscountContext.Tests.genruntimeconfig.cache
 C:\DevSam\RepublicasApp\DiscountContext.Tests\obj\Debug\net8.0\ref\DiscountContext.Tests.dll
+C:\DevSam\RepublicasApp\DiscountContext.Tests\obj\Debug\net8.0\DiscountContext.Tests.sourcelink.json

@@ -13,3 +13,4 @@ C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.
 C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\refint\DiscountContext.Domain.dll
 C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.pdb
 C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\ref\DiscountContext.Domain.dll
+C:\DevSam\RepublicasApp\DiscountContext.Domain\obj\Debug\net8.0\DiscountContext.Domain.sourcelink.json

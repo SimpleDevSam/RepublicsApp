@@ -10,3 +10,4 @@ C:\DevSam\RepublicasApp\DiscountContext.Shared\obj\Debug\net8.0\DiscountContext.
 C:\DevSam\RepublicasApp\DiscountContext.Shared\obj\Debug\net8.0\refint\DiscountContext.Shared.dll
 C:\DevSam\RepublicasApp\DiscountContext.Shared\obj\Debug\net8.0\DiscountContext.Shared.pdb
 C:\DevSam\RepublicasApp\DiscountContext.Shared\obj\Debug\net8.0\ref\DiscountContext.Shared.dll
+C:\DevSam\RepublicasApp\DiscountContext.Shared\obj\Debug\net8.0\DiscountContext.Shared.sourcelink.json
