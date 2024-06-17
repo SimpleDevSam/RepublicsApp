@@ -1,4 +1,4 @@
-using DiscountContext.Domain.Commands;
+using DiscountContext.Domain.UseCases.CreateRepublic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DiscountContext.Test.Commands

@@ -2,8 +2,8 @@ using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.Commands
-{
+namespace DiscountContext.Domain.UseCases.CreateRepublic;
+
     public class CreateRepublicCommand : Notifiable<Notification>, ICommand
     {
         public string Name { get;  set; }
@@ -32,4 +32,4 @@ namespace DiscountContext.Domain.Commands
             );
         }
     }
-}
+

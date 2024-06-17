@@ -2,7 +2,7 @@ using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.Commands;
+namespace DiscountContext.Domain.UseCases.CreateStudent;
 
 public class CreateStudentCommand : Notifiable<Notification>, ICommand
 {
