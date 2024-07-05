@@ -32,10 +32,12 @@ public class CreateStudentHandler : Notifiable<Notification>,
         }
         var name = new Name(command.FirstName, command.LastName);
         var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
+        var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
         var student = new Student(
             name,
-            birthDate
+            birthDate,
+            user
         );
 
         _studentRepository.Create(student);

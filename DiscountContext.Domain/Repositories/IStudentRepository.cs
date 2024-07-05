@@ -4,8 +4,8 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface IStudentRepository 
 {
-    void Create(Student student);
-    void Delete(Student student);
+    void Create(Student studentId);
+    void Delete(Guid studentId);
     Student Update(Student student);
-    Student Get(Student student);
+    Student Get(Guid studentId);
 }

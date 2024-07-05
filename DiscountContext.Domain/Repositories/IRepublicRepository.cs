@@ -4,8 +4,8 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface IRepublicRepository 
 {
-    void Create(Republic republic);
-    void Delete(Republic republic);
+    void Create(Republic republicId);
+    void Delete(Guid republicId);
     Republic Update(Republic republic);
-    Republic Get(Republic republic);
+    Republic Get(Guid republicId);
 }

@@ -1,16 +1,16 @@
+using System.Data;
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.UseCases.CreateDiscount;
+namespace DiscountContext.Domain.UseCases.Discount.CreateDiscount;
 
 public class CreateDiscountCommand : Notifiable<Notification>, ICommand
 {
-    public CreateDiscountCommand(Guid studentId, Guid companyId, DateTime expireDate, DateTime useDate, decimal discountAmount, int quantity)
+    public CreateDiscountCommand(Guid studentId, Guid companyId, DateTime useDate, double discountAmount, int quantity)
     {
         StudentId = studentId;
         CompanyId = companyId;
-        ExpireDate = expireDate;
         UseDate = useDate;
         DiscountAmount = discountAmount;
         Quantity = quantity;
@@ -18,9 +18,8 @@ public class CreateDiscountCommand : Notifiable<Notification>, ICommand
 
     public Guid StudentId { get; set; }
     public Guid CompanyId { get; set; }
-    public DateTime ExpireDate { get; private set; }
     public DateTime UseDate { get; private set; }
-    public decimal DiscountAmount { get; private set; }
+    public double DiscountAmount { get; private set; }
     public int Quantity { get; private set; }
     
 
@@ -29,7 +28,9 @@ public class CreateDiscountCommand : Notifiable<Notification>, ICommand
             AddNotifications(new Contract<CreateDiscountCommand>()
                 .Requires()
                 .IsNotNullOrEmpty(StudentId.ToString(),"Discount.StudentId","Student is necessary")
+                .AreNotEquals(StudentId,Guid.Empty,"Discount.StudentId","Studentid cannot be empty")
                 .IsNotNullOrEmpty(CompanyId.ToString(),"Discount.CompanyId","Company is necessary")
+                .AreNotEquals(CompanyId,Guid.Empty,"Discount.CompanyId","Discount id cannot be empty")
             );
         }
 }
