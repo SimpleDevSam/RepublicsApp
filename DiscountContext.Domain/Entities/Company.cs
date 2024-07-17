@@ -27,4 +27,18 @@ public class Company : Entity
     public EBusinessType BusinessType { get; set; }
     public IList<Republic> _republics { get; private set; }
     public IReadOnlyCollection<Republic> Republics { get { return _republics.ToArray(); } }
+
+    public void UpdateDetails(string name, Address address, EBusinessType businessType)
+    {
+        Name = name;
+        Address = address;
+        BusinessType = businessType;
+
+        AddNotifications(new Contract<Company>()
+            .Requires()
+            .IsNotNullOrEmpty(Name, "Company.Name", "Company name cannot be null or empty")
+        );
+
+        AddNotifications(address); // Assuming Address validation is handled in Address class
+    }
 }

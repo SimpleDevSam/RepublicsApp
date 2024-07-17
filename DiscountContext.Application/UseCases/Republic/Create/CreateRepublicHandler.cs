@@ -28,7 +28,7 @@ public class CreateRepublicHandler : Notifiable<Notification>,
         {
             AddNotifications(new Contract<CreateRepublicHandler>()
                     .Requires());
-            return new CommandResult(false, "Not possible to add Republic");
+            return new CommandResult<Domain.Entities.Republic>(false, "Not possible to add Republic");
         }
         var address = new Address(
             command.Street,
@@ -47,7 +47,7 @@ public class CreateRepublicHandler : Notifiable<Notification>,
 
         _RepublicRepository.Create(Republic);
 
-        return new CommandResult(true, "Republic was created");
+        return new CommandResult<Domain.Entities.Republic>(true, "Republic was created");
     }
 }
 

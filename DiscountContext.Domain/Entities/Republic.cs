@@ -28,4 +28,12 @@ public class Republic : Entity
             if (student.IsValid)
                 _students.Add(student);
         }   
+
+    public Republic UpdateRepublic (Republic republic)
+    {
+        Name = republic.Name;
+        Address = republic.Address;
+
+        return this;
+    }
 }

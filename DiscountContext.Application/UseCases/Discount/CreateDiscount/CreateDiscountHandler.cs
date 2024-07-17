@@ -28,7 +28,7 @@ public class CreateDiscountHandler : Notifiable<Notification>,
         {
             AddNotifications(new Contract<CreateDiscountHandler>()
                     .Requires());
-            return new CommandResult(false, "Not possible to add discount");
+            return new CommandResult<Domain.Entities.Discount>(false, "Not possible to add discount",null);
         }
 
         var student = _studentRepository.Get(command.StudentId);
@@ -39,9 +39,9 @@ public class CreateDiscountHandler : Notifiable<Notification>,
 
         var discount = new Entities.Discount(student,company,expireDate,0.10,3);
 
-        _discountRepository.Create(discount);
+        var createdDiscount = _discountRepository.Create(discount);
 
-        return new CommandResult(true, "Discount coupon was created");
+        return new CommandResult<Domain.Entities.Discount>(true, "Discount coupon was created", createdDiscount);
     }
 }
 
