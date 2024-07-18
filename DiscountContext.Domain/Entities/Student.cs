@@ -25,7 +25,7 @@ namespace DiscountContext.Domain.Entities
             BirthDate = student.BirthDate;
             User = student.User;
 
-            AddNotifications(Student);
+            AddNotifications(student);
         }
     }
 }

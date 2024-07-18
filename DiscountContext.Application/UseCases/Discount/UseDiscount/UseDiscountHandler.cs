@@ -28,14 +28,14 @@ public class UseDiscountHandler : Notifiable<Notification>,
         {
             AddNotifications(new Contract<CreateDiscountHandler>()
                     .Requires());
-            return new CommandResult(false, "Not possible to use discount");
+            return new CommandResult<Domain.Entities.Discount>(false, "Not possible to use discount");
         }
 
         // var discount = _discountRepository.Get(command.DiscountId);
 
         var discount = new DiscountContext.Domain.Entities.Discount(
                 new Student(new Name("John", "Doe"), new BirthDate(DateTime.Now), new User("samuca123","samuekl@gmail.com","samuelufop12")),
-                new Company("Valid Company Name", new Address("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052"), EBusinessType.Pub),
+                new Domain.Entities.Company("Valid Company Name", new Address("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052"), EBusinessType.Pub),
                 DateTime.Now.AddDays(-1),
                 10.0,
                 1
@@ -47,7 +47,7 @@ public class UseDiscountHandler : Notifiable<Notification>,
 
         _discountRepository.Update(discount);
 
-        return new CommandResult(true, "Discount coupon was created");
+        return new CommandResult<Domain.Entities.Discount>(true, "Discount coupon was created", discount);
     }
 }
 

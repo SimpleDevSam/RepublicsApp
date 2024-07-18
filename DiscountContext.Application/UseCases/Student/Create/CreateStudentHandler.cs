@@ -28,7 +28,7 @@ public class CreateStudentHandler : Notifiable<Notification>,
         {
             AddNotifications(new Contract<CreateStudentHandler>()
                     .Requires());
-            return new CommandResult(false, "Not possible to add student");
+            return new CommandResult<Student>(false, "Not possible to add student");
         }
         var name = new Name(command.FirstName, command.LastName);
         var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
@@ -42,7 +42,7 @@ public class CreateStudentHandler : Notifiable<Notification>,
 
         _studentRepository.Create(student);
 
-        return new CommandResult(true, "Estudante cadastrado");
+        return new CommandResult<Student>(true, "Estudante cadastrado");
     }
 }
 

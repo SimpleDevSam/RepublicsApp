@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiscountContext.Application\DiscountContext.Application.csproj" />
     <ProjectReference Include="..\DiscountContext.Domain\DiscountContext.Domain.csproj" />
   </ItemGroup>
 

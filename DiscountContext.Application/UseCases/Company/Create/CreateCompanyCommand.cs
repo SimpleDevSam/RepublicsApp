@@ -1,4 +1,4 @@
-using DiscountContext.Domain.UseCases.CreateRepublic;
+using DiscountContext.Domain.UseCases.Republic.Create;
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;

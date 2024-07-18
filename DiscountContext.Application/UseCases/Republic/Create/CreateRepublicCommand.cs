@@ -2,7 +2,7 @@ using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.UseCases.CreateRepublic;
+namespace DiscountContext.Domain.UseCases.Republic.Create;
 
     public class CreateRepublicCommand : Notifiable<Notification>, ICommand
     {

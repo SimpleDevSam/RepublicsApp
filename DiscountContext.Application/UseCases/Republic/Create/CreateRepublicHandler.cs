@@ -1,5 +1,6 @@
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
+using DiscountContext.Domain.UseCases.Republic.Create;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.Handlers;
@@ -40,7 +41,7 @@ public class CreateRepublicHandler : Notifiable<Notification>,
             command.ZipCode
             );
 
-        var Republic = new Republic(
+        var Republic = new Entities.Republic(
             command.Name,
             address
         );
