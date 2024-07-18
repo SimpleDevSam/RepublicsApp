@@ -1,18 +1,19 @@
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
+using System;
 
-namespace DiscountContext.Application.UseCases.Company.Delete
+namespace DiscountContext.Domain.UseCases.DeleteStudent
 {
     public class DeleteStudentCommand : Notifiable<Notification>, ICommand
     {
-        public Guid CompanyId { get; set; }
+        public Guid StudentId { get; set; }
 
         public void Validate()
         {
             AddNotifications(new Contract<DeleteStudentCommand>()
                 .Requires()
-                .IsNotEmpty(CompanyId, "CompanyId", "Company ID cannot be empty")
+                .IsNotEmpty(StudentId, "Student.StudentId", "Student ID cannot be empty")
             );
         }
     }

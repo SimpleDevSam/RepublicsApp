@@ -8,5 +8,5 @@ public interface IDiscountRepository
     void Delete(Guid discountId);
     Discount Update(Discount discount);
     Discount Get(Guid discountId);
-    IList<Domain.Entities.Discount> GetAll();
+    IList<Discount> GetAll();
 }

@@ -8,11 +8,11 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.GetAll
 {
-    public class GetAllCompaniesHandler : Notifiable<Notification>, IHandler<GetAllCompaniesQuery>
+    public class GetAllStudentQueryHandler : Notifiable<Notification>, IHandler<GetAllCompaniesQuery>
     {
         private readonly ICompanyRepository _companyRepository;
 
-        public GetAllCompaniesHandler(ICompanyRepository companyRepository)
+        public GetAllStudentQueryHandler(ICompanyRepository companyRepository)
         {
             _companyRepository = companyRepository;
         }

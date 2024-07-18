@@ -7,16 +7,16 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class DeleteCompanyHandler : Notifiable<Notification>, IHandler<DeleteCompanyCommand>
+    public class DeleteStudentCommandHandler : Notifiable<Notification>, IHandler<DeleteStudentCommand>
     {
         private readonly ICompanyRepository _companyRepository;
 
-        public DeleteCompanyHandler(ICompanyRepository companyRepository)
+        public DeleteStudentCommandHandler(ICompanyRepository companyRepository)
         {
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(DeleteCompanyCommand command)
+        public ICommandResult Handle(DeleteStudentCommand command)
         {
             command.Validate();
 

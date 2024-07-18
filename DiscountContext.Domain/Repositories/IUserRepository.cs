@@ -6,4 +6,6 @@ public interface IUserRepository
     User GetById(Guid id);
     User Delete(Guid id);
     User Update(User user);
+
+    IList<User> GetAll();
 }

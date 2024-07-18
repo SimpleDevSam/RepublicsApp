@@ -8,4 +8,6 @@ public interface IStudentRepository
     void Delete(Guid studentId);
     Student Update(Student student);
     Student Get(Guid studentId);
+
+    IList<Student> GetAll();
 }

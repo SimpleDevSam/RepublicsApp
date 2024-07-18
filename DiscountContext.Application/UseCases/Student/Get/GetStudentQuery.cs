@@ -3,17 +3,17 @@ using Flunt.Notifications;
 using Flunt.Validations;
 using System;
 
-namespace DiscountContext.Application.UseCases.Company
+namespace DiscountContext.Domain.UseCases.GetStudent
 {
     public class GetStudentQuery : Notifiable<Notification>, ICommand
     {
-        public Guid CompanyId { get; set; }
+        public Guid StudentId { get; set; }
 
         public void Validate()
         {
             AddNotifications(new Contract<GetStudentQuery>()
                 .Requires()
-                .IsNotEmpty(CompanyId, "Company.CompanyId", "Company ID cannot be empty")
+                .IsNotEmpty(StudentId, "Student.StudentId", "Student ID cannot be empty")
             );
         }
     }

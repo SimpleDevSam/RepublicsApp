@@ -9,16 +9,16 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class UpdateCompanyHandler : Notifiable<Notification>, IHandler<UpdateCompanyCommand>
+    public class UpdateCompanyCommandHandler : Notifiable<Notification>, IHandler<UpdateStudentCommand>
     {
         private readonly ICompanyRepository _companyRepository;
 
-        public UpdateCompanyHandler(ICompanyRepository companyRepository)
+        public UpdateCompanyCommandHandler(ICompanyRepository companyRepository)
         {
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(UpdateCompanyCommand command)
+        public ICommandResult Handle(UpdateStudentCommand command)
         {
             command.Validate();
 

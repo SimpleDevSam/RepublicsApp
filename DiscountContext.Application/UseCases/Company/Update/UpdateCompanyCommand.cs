@@ -4,7 +4,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company
 {
-    public class UpdateCompanyCommand : Notifiable<Notification>, ICommand
+    public class UpdateStudentCommand : Notifiable<Notification>, ICommand
     {
         public Guid CompanyId { get; set; }
         public string Name { get; set; }
@@ -19,7 +19,7 @@ namespace DiscountContext.Application.UseCases.Company
 
         public void Validate()
         {
-            AddNotifications(new Contract<UpdateCompanyCommand>()
+            AddNotifications(new Contract<UpdateStudentCommand>()
                 .Requires()
                 .IsNotEmpty(CompanyId, "Company.CompanyId", "Company ID cannot be empty")
                 .IsNotNullOrEmpty(Name, "Company.Name", "Name cannot be null or empty")

@@ -7,16 +7,16 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class GetCompanyHandler : Notifiable<Notification>, IHandler<GetCompanyQuery>
+    public class GetStudentQueryHandler : Notifiable<Notification>, IHandler<GetStudentQuery>
     {
         private readonly ICompanyRepository _companyRepository;
 
-        public GetCompanyHandler(ICompanyRepository companyRepository)
+        public GetStudentQueryHandler(ICompanyRepository companyRepository)
         {
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(GetCompanyQuery query)
+        public ICommandResult Handle(GetStudentQuery query)
         {
             query.Validate();
 
