@@ -5,6 +5,7 @@ namespace DiscountContext.Domain.ValueObjects
 {
     public class Name : ValueObject
     {
+        public Name() { }
         public Name(string firstName, string lastName)
         {
             FirstName = firstName;

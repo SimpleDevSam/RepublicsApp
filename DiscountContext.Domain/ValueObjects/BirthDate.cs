@@ -5,6 +5,9 @@ namespace DiscountContext.Domain.ValueObjects;
 
 public class BirthDate : ValueObject
 {
+    public BirthDate()
+    {
+    }
     public BirthDate (DateTime birthdate)
     {
         BornDate = birthdate;

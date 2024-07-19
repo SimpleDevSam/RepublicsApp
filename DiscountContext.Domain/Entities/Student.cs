@@ -6,6 +6,10 @@ namespace DiscountContext.Domain.Entities
 {
     public class Student : Entity
     {
+
+        public Student()
+        {
+        }
         public Student(Name name, BirthDate birthDate, User user)
         {
             Name = name;
