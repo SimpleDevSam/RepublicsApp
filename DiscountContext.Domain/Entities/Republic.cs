@@ -6,6 +6,10 @@ namespace DiscountContext.Domain.Entities;
 
 public class Republic : Entity
 {
+    public Republic()
+    {
+        _students = new List<Student>();
+    }
     public Republic(string name, Address address)
     {
         Name = name;

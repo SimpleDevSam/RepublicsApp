@@ -8,6 +8,11 @@ namespace DiscountContext.Domain.Entities;
 
 public class Company : Entity
 {
+
+    private Company()
+    {
+        _republics = new List<Republic>();
+    }
     public Company(string name, Address address, EBusinessType businessType)
     {
         _republics = new List<Republic>();

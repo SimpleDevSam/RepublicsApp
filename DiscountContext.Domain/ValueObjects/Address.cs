@@ -4,7 +4,9 @@ using DiscountContext.Shared.ValueObjects;
 namespace DiscountContext.Domain.ValueObjects
 {
     public class Address : ValueObject
+
     {
+        public Address() { }
         public Address(string street, string number, string neighbourhood, string city, string state, string country, string zipCode)
         {
             Street = street;

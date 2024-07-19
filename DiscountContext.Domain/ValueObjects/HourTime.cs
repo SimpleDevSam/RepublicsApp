@@ -5,6 +5,9 @@ namespace DiscountContext.Domain.ValueObjects;
 
 public class HourTime : ValueObject
 {
+    public HourTime()
+    {
+    }
     public HourTime(int hour)
     {
         Hour = hour;
