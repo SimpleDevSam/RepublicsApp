@@ -14,9 +14,12 @@ namespace DiscountContext.Infrastructure.Data.Configurations
                    .IsRequired()
                    .HasMaxLength(100);
 
+            builder.Property(c => c.OffersDiscount)
+                .IsRequired()
+                .HasDefaultValue(false);
+
             builder.OwnsOne(c => c.Address, a =>
             {
-                a.Ignore(a => a.Notifications);
 
                 a.Property(p => p.Street)
                  .IsRequired()
@@ -50,9 +53,6 @@ namespace DiscountContext.Infrastructure.Data.Configurations
             builder.Property(c => c.BusinessType)
                    .IsRequired();
 
-            builder.HasMany(c => c.Republics)
-                   .WithOne()
-                   .HasForeignKey("CompanyId"); 
         }
     }
 }

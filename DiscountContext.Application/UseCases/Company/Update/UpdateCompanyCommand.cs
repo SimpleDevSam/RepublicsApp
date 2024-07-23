@@ -4,9 +4,11 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company
 {
-    public class UpdateStudentCommand : Notifiable<Notification>, ICommand
+    public class UpdateCompanyCommand : Notifiable<Notification>, ICommand
     {
         public Guid CompanyId { get; set; }
+
+        public bool OffersDiscount { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
@@ -19,8 +21,9 @@ namespace DiscountContext.Application.UseCases.Company
 
         public void Validate()
         {
-            AddNotifications(new Contract<UpdateStudentCommand>()
+            AddNotifications(new Contract<UpdateCompanyCommand>()
                 .Requires()
+                .IsNotNull(OffersDiscount, "Company.OfferDiscount", "OfferDiscount cannot be empty")
                 .IsNotEmpty(CompanyId, "Company.CompanyId", "Company ID cannot be empty")
                 .IsNotNullOrEmpty(Name, "Company.Name", "Name cannot be null or empty")
                 .IsNotNullOrEmpty(Street, "Company.Street", "Street cannot be null or empty")

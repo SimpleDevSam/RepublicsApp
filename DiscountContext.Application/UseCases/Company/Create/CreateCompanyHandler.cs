@@ -28,7 +28,7 @@ public class CreateCompanyHandler : Notifiable<Notification>,
         {
             AddNotifications(new Contract<CreateCompanyHandler>()
                     .Requires());
-            return new CommandResult<Domain.Entities.Company>(false, "Not possible to create company",null);
+            return new CommandResult<Entities.Company>(false, "Not possible to create company",null);
         }
 
         var address = new Address(
@@ -43,7 +43,7 @@ public class CreateCompanyHandler : Notifiable<Notification>,
 
     var businessType = (EBusinessType)command.BusinessType;
 
-    var company = new Domain.Entities.Company(
+    var company = new Entities.Company(
         command.Name,
         address,
         businessType
@@ -51,7 +51,7 @@ public class CreateCompanyHandler : Notifiable<Notification>,
 
     _companyRepository.Create(company);
 
-        return new CommandResult<Domain.Entities.Company>(true, "Company was created", company);
+        return new CommandResult<Entities.Company>(true, "Company was created", company);
     }
 }
 

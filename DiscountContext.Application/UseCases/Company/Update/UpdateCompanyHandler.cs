@@ -9,7 +9,7 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class UpdateCompanyCommandHandler : Notifiable<Notification>, IHandler<UpdateStudentCommand>
+    public class UpdateCompanyCommandHandler : Notifiable<Notification>, IHandler<UpdateCompanyCommand>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -18,7 +18,7 @@ namespace DiscountContext.Domain.UseCases.Company
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(UpdateStudentCommand command)
+        public ICommandResult Handle(UpdateCompanyCommand command)
         {
             command.Validate();
 
@@ -45,7 +45,8 @@ namespace DiscountContext.Domain.UseCases.Company
                     command.Country,
                     command.ZipCode
                 ),
-                (EBusinessType)command.BusinessType
+                (EBusinessType)command.BusinessType,
+                command.OffersDiscount
             );
 
             _companyRepository.Update(company);

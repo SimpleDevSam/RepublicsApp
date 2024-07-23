@@ -36,13 +36,5 @@ namespace DiscountContext.Test.Entities
             Assert.IsTrue(company.IsValid);
         }
 
-        [TestMethod]
-        public void ShouldInitializeRepublicsAsEmpty()
-        {
-            var address = CreateValidAddress();
-            var company = new Company("Valid Company Name", address, EBusinessType.Pub);
-            Assert.IsNotNull(company.Republics);
-            Assert.AreEqual(0, company.Republics.Count);
-        }
     }
 }

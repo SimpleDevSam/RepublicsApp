@@ -8,13 +8,14 @@ public class Republic : Entity
 {
     public Republic()
     {
-        _students = new List<Student>();
+        Students = new List<Student>();
     }
     public Republic(string name, Address address)
     {
         Name = name;
         Address = address;
-        _students = new List<Student>();
+        IsOnDiscount = true;
+        Students = new List<Student>();
 
         AddNotifications(address);
         AddNotifications(new Contract<Republic>()
@@ -23,14 +24,15 @@ public class Republic : Entity
     }
 
     public string Name { get; private set; }
+    public bool IsOnDiscount { get; private set; }
     public Address Address  { get; private set; }
-    public IList<Student> _students { get; private set; }
-    public IReadOnlyCollection<Student> Students { get { return _students.ToArray(); } }
+    public IList<Student> Students { get; private set; }
+
 
     public void AddStudent(Student student)
         {
             if (student.IsValid)
-                _students.Add(student);
+                Students.Add(student);
         }   
 
     public Republic UpdateRepublic (Republic republic)

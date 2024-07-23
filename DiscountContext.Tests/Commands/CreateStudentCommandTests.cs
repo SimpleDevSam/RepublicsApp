@@ -8,11 +8,11 @@ namespace DiscountContext.Test.Commands
         [TestMethod]
         public void ShouldReturnErrorWhenFirstNameIsNullOrEmpty()
         {
-            var studentCommand = new CreateStudentCommand(null, "Maia", "02/01/1998");
+            var studentCommand = new CreateStudentCommand(null, "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
 
-            studentCommand = new CreateStudentCommand("", "Maia", "02/01/1998");
+            studentCommand = new CreateStudentCommand("", "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
         }
@@ -20,11 +20,11 @@ namespace DiscountContext.Test.Commands
         [TestMethod]
         public void ShouldReturnErrorWhenLastNameIsNullOrEmpty()
         {
-            var studentCommand = new CreateStudentCommand("John", null, "02/01/1998");
+            var studentCommand = new CreateStudentCommand("John", null, "02/01/1998", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
 
-            studentCommand = new CreateStudentCommand("John", "", "02/01/1998");
+            studentCommand = new CreateStudentCommand("John", "", "02/01/1998", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
         }
@@ -32,11 +32,11 @@ namespace DiscountContext.Test.Commands
         [TestMethod]
         public void ShouldReturnErrorWhenBornDateIsNullOrEmpty()
         {
-            var studentCommand = new CreateStudentCommand("John", "Maia", null);
+            var studentCommand = new CreateStudentCommand("John", "Maia", null, "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
 
-            studentCommand = new CreateStudentCommand("John", "Maia", "");
+            studentCommand = new CreateStudentCommand("John", "Maia", "", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsFalse(studentCommand.IsValid);
         }
@@ -44,7 +44,7 @@ namespace DiscountContext.Test.Commands
         [TestMethod]
         public void ShouldBeValidWhenAllPropertiesAreValid()
         {
-            var studentCommand = new CreateStudentCommand("John", "Maia", "02/01/1998");
+            var studentCommand = new CreateStudentCommand("John", "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
             studentCommand.Validate();
             Assert.IsTrue(studentCommand.IsValid);
         }

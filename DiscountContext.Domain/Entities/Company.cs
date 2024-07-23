@@ -8,15 +8,13 @@ namespace DiscountContext.Domain.Entities;
 
 public class Company : Entity
 {
-
     private Company()
     {
-        _republics = new List<Republic>();
     }
     public Company(string name, Address address, EBusinessType businessType)
     {
-        _republics = new List<Republic>();
         Name = name;
+        OffersDiscount = false;
         Address = address;
         BusinessType = businessType;
 
@@ -28,16 +26,17 @@ public class Company : Entity
     }
 
     public string Name { get; private set; }
+    public bool OffersDiscount { get; private set; }
     public Address Address  { get; private set; }
     public EBusinessType BusinessType { get; set; }
-    public IList<Republic> _republics { get; private set; }
-    public IReadOnlyCollection<Republic> Republics { get { return _republics.ToArray(); } }
 
-    public void UpdateDetails(string name, Address address, EBusinessType businessType)
+    public void UpdateDetails(string name, Address address, EBusinessType businessType,bool offersDiscount )
     {
         Name = name;
+        OffersDiscount = offersDiscount;
         Address = address;
         BusinessType = businessType;
+
 
         AddNotifications(new Contract<Company>()
             .Requires()

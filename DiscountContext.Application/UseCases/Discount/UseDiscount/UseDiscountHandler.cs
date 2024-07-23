@@ -33,9 +33,9 @@ public class UseDiscountHandler : Notifiable<Notification>,
 
         // var discount = _discountRepository.Get(command.DiscountId);
 
-        var discount = new DiscountContext.Domain.Entities.Discount(
-                new Student(new Name("John", "Doe"), new BirthDate(DateTime.Now), new User("samuca123","samuekl@gmail.com","samuelufop12")),
-                new Domain.Entities.Company("Valid Company Name", new Address("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052"), EBusinessType.Pub),
+        var discount = new Entities.Discount(
+                new Student(new Name("John", "Doe"), new BirthDate(DateTime.Now), "samuca123","samuekl@gmail.com","samuelufop12"),
+                new Entities.Company("Valid Company Name", new Address("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052"), EBusinessType.Pub),
                 DateTime.Now.AddDays(-1),
                 10.0,
                 1
@@ -47,7 +47,7 @@ public class UseDiscountHandler : Notifiable<Notification>,
 
         _discountRepository.Update(discount);
 
-        return new CommandResult<Domain.Entities.Discount>(true, "Discount coupon was created", discount);
+        return new CommandResult<Entities.Discount>(true, "Discount coupon was created", discount);
     }
 }
 

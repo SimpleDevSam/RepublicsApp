@@ -35,8 +35,7 @@ namespace DiscountContext.Domain.UseCases.UpdateStudent
 
             var name = new Name(command.FirstName, command.LastName);
             var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
-            var user = new User("samuca123", "samuekl@gmail.com", "samuelufop12");
-            var studentToBeUpdated = new Student(name, birthDate, user);
+            var studentToBeUpdated = new Student(name, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
 
             student.UpdateStudent(studentToBeUpdated);
             _studentRepository.Update(student);

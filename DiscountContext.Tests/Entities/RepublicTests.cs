@@ -19,18 +19,16 @@ namespace DiscountContext.Test.Entities
         {
             var name = new Name("John", "Doe");
             var birthDate = new BirthDate(new DateTime(2000, 1, 1));
-            var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
-            return new Student(name, birthDate, user);
+            return new Student(name, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
         }
 
         private Student CreateInvalidStudent()
         {
             var invalidName = new Name("", ""); 
             var invalidBirthDate = new BirthDate(DateTime.Now.AddYears(1)); 
-            var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
-            return new Student(invalidName, invalidBirthDate, user);
+            return new Student(invalidName, invalidBirthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
         }
 
         [TestMethod]

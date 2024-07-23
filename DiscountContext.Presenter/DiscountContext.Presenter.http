@@ -1,0 +1,6 @@
+@DiscountContext.Presenter_HostAddress = http://localhost:5095
+
+GET {{DiscountContext.Presenter_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

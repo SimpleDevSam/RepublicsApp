@@ -21,13 +21,12 @@ namespace DiscountContext.Test.Entities
         {
             var invalidName = new Name("", "Doe");
             var birthDate = CreateValidBirthDate();
-            var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
-            var student = new Student(invalidName, birthDate, user);
+            var student = new Student(invalidName, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
             Assert.IsFalse(student.IsValid);
 
             invalidName = new Name(null, "Doe");
-            student = new Student(invalidName, birthDate, user);
+            student = new Student(invalidName, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
             Assert.IsFalse(student.IsValid);
         }
 
@@ -36,9 +35,8 @@ namespace DiscountContext.Test.Entities
         {
             var name = CreateValidName();
             var invalidBirthDate = new BirthDate(DateTime.Now.AddYears(1)); 
-            var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
-            var student = new Student(name, invalidBirthDate,user);
+            var student = new Student(name, invalidBirthDate,"samuca123", "samuekl@gmail.com", "samuelufop12");
             Assert.IsFalse(student.IsValid);
         }
 
@@ -47,9 +45,8 @@ namespace DiscountContext.Test.Entities
         {
             var name = CreateValidName();
             var birthDate = CreateValidBirthDate();
-            var user = new User("samuca123","samuekl@gmail.com","samuelufop12");
 
-            var student = new Student(name, birthDate, user);
+            var student = new Student(name, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
             Assert.IsTrue(student.IsValid);
         }
     }

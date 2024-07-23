@@ -14,6 +14,10 @@ namespace DiscountContext.Infrastructure.Data.Configurations
                    .IsRequired()
                    .HasMaxLength(100);
 
+            builder.Property(r => r.IsOnDiscount)
+                   .IsRequired()
+                   .HasDefaultValue(true);
+
             builder.OwnsOne(r => r.Address, a =>
             {
                 a.Ignore(a => a.Notifications);
@@ -23,7 +27,7 @@ namespace DiscountContext.Infrastructure.Data.Configurations
 
                 a.Property(p => p.Number)
                  .IsRequired()
-                 .HasMaxLength(50); // Adjust as needed
+                 .HasMaxLength(50);
 
                 a.Property(p => p.Neighbourhood)
                  .IsRequired()
@@ -43,12 +47,12 @@ namespace DiscountContext.Infrastructure.Data.Configurations
 
                 a.Property(p => p.ZipCode)
                  .IsRequired()
-                 .HasMaxLength(20); // Adjust as needed
+                 .HasMaxLength(20);
             });
 
             builder.HasMany(r => r.Students)
                    .WithOne()
-                   .HasForeignKey("RepublicId"); // Ensure "RepublicId" is correct
+                   .HasForeignKey("RepublicId"); 
         }
     }
 }
