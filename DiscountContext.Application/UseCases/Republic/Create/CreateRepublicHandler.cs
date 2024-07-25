@@ -1,26 +1,26 @@
+using DiscountContext.Application.UseCases.Republic.Create;
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
-using DiscountContext.Domain.UseCases.Republic.Create;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
 using Flunt.Validations;
 using PaymentContext.Domain.Commands;
+using MediatR;
 
-
-namespace DiscountContext.Domain.UseCases.CreateRepublic;
+namespace DiscountContext.Application.UseCases.Create;
 
 public class CreateRepublicHandler : Notifiable<Notification>,
-        IHandler<CreateRepublicCommand>
+        IRequestHandler<CreateRepublicCommand,ICommandResult>
 {
-    private IRepublicRepository _RepublicRepository { get; set; }
+    private IRepublicRepository _republicRepository { get; set; }
     public CreateRepublicHandler(IRepublicRepository RepublicRepository)
     {
-        _RepublicRepository = RepublicRepository;
+        _republicRepository = RepublicRepository;
     }
 
-    public ICommandResult Handle(CreateRepublicCommand command)
+    public async Task<ICommandResult>  Handle(CreateRepublicCommand command, CancellationToken cancellationToken)
     {
 
         command.Validate();
@@ -41,15 +41,16 @@ public class CreateRepublicHandler : Notifiable<Notification>,
             command.ZipCode
             );
 
-        var Republic = new Entities.Republic(
+        var Republic = new Domain.Entities.Republic(
             command.Name,
             address
         );
 
-        _RepublicRepository.Create(Republic);
+        await _republicRepository.CreateAsync(Republic);
 
         return new CommandResult<Domain.Entities.Republic>(true, "Republic was created");
     }
+
 }
 
 

@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mediatr" Version="12.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiscountContext.Application\DiscountContext.Application.csproj" />
+    <ProjectReference Include="..\DiscountContext.Domain\DiscountContext.Domain.csproj" />
+    <ProjectReference Include="..\DiscountContext.Infrastructure\DiscountContext.Infrastructure.csproj" />
+    <ProjectReference Include="..\DiscountContext.Shared\DiscountContext.Shared.csproj" />
+    <ProjectReference Include="..\DiscountContext.Tests\DiscountContext.Tests.csproj" />
   </ItemGroup>
 
 </Project>

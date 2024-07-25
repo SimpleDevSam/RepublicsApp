@@ -5,7 +5,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Domain.UseCases.Discount.CreateDiscount;
 
-public class CreateDiscountCommand : Notifiable<Notification>, ICommand
+public class CreateDiscountCommand : Notifiable<Notification>, ICommand<ICommandResult>
 {
     public CreateDiscountCommand(Guid studentId, Guid companyId, DateTime useDate, double discountAmount, int quantity)
     {

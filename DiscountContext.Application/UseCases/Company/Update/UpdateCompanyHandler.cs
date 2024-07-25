@@ -3,13 +3,13 @@ using DiscountContext.Domain.Enums;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class UpdateCompanyCommandHandler : Notifiable<Notification>, IHandler<UpdateCompanyCommand>
+    public class UpdateCompanyCommandHandler : Notifiable<Notification>, IRequestHandler<UpdateCompanyCommand, ICommandResult<Entities.Company>>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -18,20 +18,20 @@ namespace DiscountContext.Domain.UseCases.Company
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(UpdateCompanyCommand command)
+        public async Task<ICommandResult<Entities.Company>> Handle(UpdateCompanyCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
             if (!command.IsValid)
             {
-                return new CommandResult<bool>(false, "Invalid data", false);
+                return new CommandResult<Entities.Company>(false, "Invalid data", null);
             }
 
-            var company = _companyRepository.Get(command.CompanyId);
+            var company = await _companyRepository.GetAsync(command.CompanyId);
 
             if (company == null)
             {
-                return new CommandResult<bool>(false, "Company not found", false);
+                return new CommandResult<Entities.Company>(false, "Company not found", null);
             }
 
             company.UpdateDetails(
@@ -49,9 +49,10 @@ namespace DiscountContext.Domain.UseCases.Company
                 command.OffersDiscount
             );
 
-            _companyRepository.Update(company);
+           await  _companyRepository.UpdateAsync(company);
 
             return new CommandResult<Entities.Company>(true, "Company updated successfully", company);
         }
+
     }
 }

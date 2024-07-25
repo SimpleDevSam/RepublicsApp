@@ -1,10 +1,10 @@
 ﻿using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
-using Flunt.Validations;
+
 
 namespace DiscountContext.Application.UseCases.Republic
 {
-    public class GetAllRepublicsQuery : Notifiable<Notification>, ICommand
+    public class GetAllRepublicsQuery : Notifiable<Notification>, ICommand<ICommandResult<IList<Domain.Entities.Republic>>>
     {
         public void Validate()
         {

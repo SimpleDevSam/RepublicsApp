@@ -4,10 +4,10 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface IStudentRepository 
 {
-    void Create(Student studentId);
-    void Delete(Guid studentId);
-    Student Update(Student student);
-    Student Get(Guid studentId);
+    Task CreateAsync(Student studentId);
+    Task DeleteAsync(Guid studentId);
+    Task<Student> UpdateAsync(Student student);
+    Task<Student> GetAsync(Guid studentId);
 
-    IList<Student> GetAll();
+    Task<IList<Student>> GetAllAsync();
 }

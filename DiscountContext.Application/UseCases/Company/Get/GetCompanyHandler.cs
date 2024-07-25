@@ -1,13 +1,14 @@
 ﻿using DiscountContext.Application.UseCases.Company;
+using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class GetStudentQueryHandler : Notifiable<Notification>, IHandler<GetStudentQuery>
+    public class GetStudentQueryHandler : Notifiable<Notification>, IRequestHandler<GetStudentQuery, ICommandResult<Entities.Company>>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -16,7 +17,7 @@ namespace DiscountContext.Domain.UseCases.Company
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(GetStudentQuery query)
+        public async Task<ICommandResult<Entities.Company>> Handle(GetStudentQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
@@ -25,7 +26,7 @@ namespace DiscountContext.Domain.UseCases.Company
                 return new CommandResult<Entities.Company>(false, "Invalid query", null);
             }
 
-            var company = _companyRepository.Get(query.CompanyId);
+            var company = await  _companyRepository.GetAsync(query.CompanyId);
 
             if (company == null)
             {
@@ -34,5 +35,6 @@ namespace DiscountContext.Domain.UseCases.Company
 
             return new CommandResult<Entities.Company>(true, "Company retrieved successfully", company);
         }
+
     }
 }

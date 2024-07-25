@@ -2,11 +2,12 @@
 using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Application.UseCases.Republic
 {
-    public class GetRepublicQueryHandler : Notifiable<Notification>, IHandler<GetRepublicQuery>
+    public class GetRepublicQueryHandler : Notifiable<Notification>, IRequestHandler<GetRepublicQuery, ICommandResult<Domain.Entities.Republic>>
     {
         private readonly IRepublicRepository _republicRepository;
 
@@ -15,7 +16,7 @@ namespace DiscountContext.Application.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public ICommandResult Handle(GetRepublicQuery query)
+        public async  Task<ICommandResult<Domain.Entities.Republic>> Handle(GetRepublicQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
@@ -24,7 +25,7 @@ namespace DiscountContext.Application.UseCases.Republic
                 return new CommandResult<Domain.Entities.Republic>(false, "Invalid query data");
             }
 
-            var republic = _republicRepository.Get(query.RepublicId);
+            var republic = await _republicRepository.GetAsync(query.RepublicId);
 
             if (republic == null)
             {
@@ -33,5 +34,6 @@ namespace DiscountContext.Application.UseCases.Republic
 
             return new CommandResult<Domain.Entities.Republic>(true, "Republic retrieved successfully", republic);
         }
+
     }
 }

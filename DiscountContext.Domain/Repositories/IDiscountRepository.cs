@@ -4,9 +4,9 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface IDiscountRepository 
 {
-    Discount Create(Discount discount);
-    void Delete(Guid discountId);
-    Discount Update(Discount discount);
-    Discount Get(Guid discountId);
-    IList<Discount> GetAll();
+    Task<Discount> CreateAsync(Discount discount);
+    Task DeleteAsync(Guid discountId);
+    Task<Discount> UpdateAsync(Discount discount);
+    Task<Discount> GetAsync(Guid discountId);
+    Task<IList<Discount>> GetAllAsync();
 }

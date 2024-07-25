@@ -4,10 +4,10 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface ICompanyRepository 
 {
-    void Create(Company company);
-    void Delete(Guid companyId);
-    Company Update(Company company);
-    Company Get(Guid companyId);
+    Task CreateAsync(Company company);
+    Task DeleteAsync(Guid companyId);
+    Task<Company> UpdateAsync(Company company);
+    Task<Company> GetAsync(Guid companyId);
 
-    IList<Company> GetAll();
+    Task<IList<Company>> GetAllAsync();
 }

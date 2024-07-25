@@ -4,7 +4,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company.Delete
 {
-    public class DeleteStudentCommand : Notifiable<Notification>, ICommand
+    public class DeleteStudentCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public Guid CompanyId { get; set; }
 

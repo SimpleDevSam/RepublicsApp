@@ -2,13 +2,13 @@
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Republic
 {
-    public class UpdateRepublicCommandHandler : Notifiable<Notification>, IHandler<UpdateRepublicCommand>
+    public class UpdateRepublicCommandHandler : Notifiable<Notification>, IRequestHandler<UpdateRepublicCommand, ICommandResult>
     {
         private readonly IRepublicRepository _republicRepository;
 
@@ -17,7 +17,7 @@ namespace DiscountContext.Domain.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public ICommandResult Handle(UpdateRepublicCommand command)
+        public async Task<ICommandResult> Handle(UpdateRepublicCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
@@ -26,7 +26,7 @@ namespace DiscountContext.Domain.UseCases.Republic
                 return new CommandResult<bool>(false, "Invalid data", false);
             }
 
-            var republic = _republicRepository.Get(command.RepublicId);
+            var republic = await _republicRepository.GetAsync(command.RepublicId);
 
             if (republic == null)
             {
@@ -48,7 +48,7 @@ namespace DiscountContext.Domain.UseCases.Republic
                 )
             );
 
-            _republicRepository.Update(republic);
+            await _republicRepository.UpdateAsync(republic);
 
             return new CommandResult<Entities.Republic>(true, "Republic updated successfully", republic);
         }

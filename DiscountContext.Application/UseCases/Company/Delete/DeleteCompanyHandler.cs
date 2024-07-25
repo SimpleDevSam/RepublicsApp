@@ -1,13 +1,15 @@
 using DiscountContext.Application.UseCases.Company.Delete;
+using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
+using System.Reflection.Metadata;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class DeleteStudentCommandHandler : Notifiable<Notification>, IHandler<DeleteStudentCommand>
+    public class DeleteStudentCommandHandler : Notifiable<Notification>, IRequestHandler<DeleteStudentCommand, ICommandResult>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -16,7 +18,7 @@ namespace DiscountContext.Domain.UseCases.Company
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(DeleteStudentCommand command)
+        public async Task<ICommandResult> Handle(DeleteStudentCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
@@ -25,15 +27,16 @@ namespace DiscountContext.Domain.UseCases.Company
                 return new CommandResult<Domain.Entities.Company>(false, "Invalid command data");
             }
 
-            var company = _companyRepository.Get(command.CompanyId);
+            var company = _companyRepository.GetAsync(command.CompanyId);
 
             if (company == null)
             {
                 return new CommandResult<Domain.Entities.Company>(false, "Company not found");
             }
-            _companyRepository.Delete(company.Id);
+            await _companyRepository.DeleteAsync(command.CompanyId);
 
             return new CommandResult<Domain.Entities.Company>(true, "Company successfully deleted");
         }
+
     }
 }

@@ -4,10 +4,11 @@ using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
 using PaymentContext.Domain.Commands;
+using MediatR;
 
 namespace DiscountContext.Domain.UseCases.Republic
 {
-    public class DeleteRepublicHandler : Notifiable<Notification>, IHandler<DeleteRepublicCommand>
+    public class DeleteRepublicHandler : Notifiable<Notification>, IRequestHandler<DeleteRepublicCommand,ICommandResult>
     {
         private readonly IRepublicRepository _republicRepository;
 
@@ -16,7 +17,7 @@ namespace DiscountContext.Domain.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public ICommandResult Handle(DeleteRepublicCommand command)
+        public async  Task<ICommandResult> Handle(DeleteRepublicCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
@@ -25,16 +26,17 @@ namespace DiscountContext.Domain.UseCases.Republic
                 return new CommandResult<Entities.Republic>(false, "Invalid command data");
             }
 
-            var republic = _republicRepository.Get(command.RepublicId);
+            var republic = _republicRepository.GetAsync(command.RepublicId);
 
             if (republic == null)
             {
                 return new CommandResult<Entities.Republic>(false, "Republic not found");
             }
 
-            _republicRepository.Delete(republic.Id);
+            await _republicRepository.DeleteAsync(command.RepublicId);
 
             return new CommandResult<Entities.Republic>(true, "Republic successfully deleted");
         }
+
     }
 }

@@ -2,12 +2,13 @@ using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.UseCases.Republic.Create;
 
-    public class CreateRepublicCommand : Notifiable<Notification>, ICommand
+namespace DiscountContext.Application.UseCases.Republic.Create;
+
+    public class CreateRepublicCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public string Name { get;  set; }
-        public string BornDate { get; set; }
+        public bool? IsOnDiscount { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
         public string Neighbourhood { get; set; }
@@ -21,7 +22,6 @@ namespace DiscountContext.Domain.UseCases.Republic.Create;
             AddNotifications(new Contract<CreateRepublicCommand>()
                 .Requires()
                 .IsNotNullOrEmpty(Name, "Republic.Name", "Name cannot be null or empty")
-                .IsNotNullOrEmpty(BornDate, "Republic.BornDate", "Born Date cannot be null or empty")
                 .IsNotNullOrEmpty(Street, "Republic.Street", "Street cannot be null or empty")
                 .IsNotNullOrEmpty(Number, "Republic.Number", "Number cannot be null or empty")
                 .IsNotNullOrEmpty(Neighbourhood, "Republic.Neighbourhood", "Neighbourhood cannot be null or empty")

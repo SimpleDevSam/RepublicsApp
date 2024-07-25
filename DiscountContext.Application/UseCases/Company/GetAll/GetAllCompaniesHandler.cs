@@ -1,14 +1,13 @@
 ﻿using DiscountContext.Application.UseCases.Company;
-using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.GetAll
 {
-    public class GetAllStudentQueryHandler : Notifiable<Notification>, IHandler<GetAllCompaniesQuery>
+    public class GetAllStudentQueryHandler : Notifiable<Notification>, IRequestHandler<GetAllCompaniesQuery,ICommandResult<IList<Domain.Entities.Company>>>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -17,9 +16,9 @@ namespace DiscountContext.Domain.UseCases.GetAll
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(GetAllCompaniesQuery query)
+        public async Task<ICommandResult<IList<Entities.Company>>> Handle(GetAllCompaniesQuery query, CancellationToken cancellationToken)
         {
-            var companies = _companyRepository.GetAll();
+            var companies = await _companyRepository.GetAllAsync();
 
             return new CommandResult<IList<Entities.Company>>(true, "Companies retrieved successfully", companies);
         }

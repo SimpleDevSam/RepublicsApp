@@ -5,7 +5,7 @@ using System;
 
 namespace DiscountContext.Application.UseCases.Republic
 {
-    public class UpdateRepublicCommand : Notifiable<Notification>, ICommand
+    public class UpdateRepublicCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public Guid RepublicId { get; set; }
         public string? Name { get; set; }

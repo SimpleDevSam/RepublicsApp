@@ -5,7 +5,7 @@ using System;
 
 namespace DiscountContext.Application.UseCases.Company
 {
-    public class GetStudentQuery : Notifiable<Notification>, ICommand
+    public class GetStudentQuery : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Company>>
     {
         public Guid CompanyId { get; set; }
 

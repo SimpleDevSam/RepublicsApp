@@ -1,14 +1,15 @@
-﻿using DiscountContext.Domain.Entities;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
-using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
-using System.Collections.Generic;
 
 namespace DiscountContext.Application.UseCases.Republic
 {
-    public class GetAllRepublicsQueryHandler : Notifiable<Notification>, IHandler<GetAllRepublicsQuery>
+    public class GetAllRepublicsQueryHandler : IRequestHandler<GetAllRepublicsQuery, ICommandResult<IList<Domain.Entities.Republic>>>
     {
         private readonly IRepublicRepository _republicRepository;
 
@@ -17,7 +18,7 @@ namespace DiscountContext.Application.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public ICommandResult Handle(GetAllRepublicsQuery query)
+        public async Task<ICommandResult<IList<Domain.Entities.Republic>>> Handle(GetAllRepublicsQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
@@ -26,7 +27,7 @@ namespace DiscountContext.Application.UseCases.Republic
                 return new CommandResult<IList<Domain.Entities.Republic>>(false, "Invalid query data");
             }
 
-            var republics = _republicRepository.GetAll();
+            var republics = await _republicRepository.GetAllAsync();
 
             return new CommandResult<IList<Domain.Entities.Republic>>(true, "Republics retrieved successfully", republics);
         }

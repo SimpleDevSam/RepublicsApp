@@ -1,11 +1,11 @@
-using DiscountContext.Domain.UseCases.Republic.Create;
+using DiscountContext.Application.UseCases.Republic.Create;
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company;
 
-    public class CreateCompanyCommand : Notifiable<Notification>, ICommand
+    public class CreateCompanyCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public string Name { get;  set; }
         public string BornDate { get; set; }

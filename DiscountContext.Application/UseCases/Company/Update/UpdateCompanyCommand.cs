@@ -4,7 +4,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company
 {
-    public class UpdateCompanyCommand : Notifiable<Notification>, ICommand
+    public class UpdateCompanyCommand : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Company>>
     {
         public Guid CompanyId { get; set; }
 

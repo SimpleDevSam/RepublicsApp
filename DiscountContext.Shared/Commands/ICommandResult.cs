@@ -4,10 +4,10 @@ namespace DiscountContext.Shared.Commands
     {
         bool Success { get; }
         string Message { get; }
+    }
 
-        public interface ICommandResult<T> : ICommandResult
-        {
-            T Data { get; set; }
-        }
+    public interface ICommandResult<T> : ICommandResult
+    {
+        T Data { get; }
     }
 }

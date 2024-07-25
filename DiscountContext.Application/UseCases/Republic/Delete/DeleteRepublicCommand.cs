@@ -4,7 +4,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Republic.Delete
 {
-    public class DeleteRepublicCommand : Notifiable<Notification>, ICommand
+    public class DeleteRepublicCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public Guid RepublicId { get; set; }
 

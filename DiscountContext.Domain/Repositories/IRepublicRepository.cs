@@ -4,10 +4,10 @@ namespace  DiscountContext.Domain.Repositories;
 
 public interface IRepublicRepository 
 {
-    void Create(Republic republicId);
-    void Delete(Guid republicId);
+    Task CreateAsync(Republic republicId);
+    Task DeleteAsync(Guid republicId);
 
-    IList<Republic> GetAll();
-    Republic Update(Republic republic);
-    Republic Get(Guid republicId);
+    Task<IList<Republic>> GetAllAsync();
+    Task<Republic> UpdateAsync(Republic republic);
+    Task<Republic> GetAsync(Guid republicId);
 }
