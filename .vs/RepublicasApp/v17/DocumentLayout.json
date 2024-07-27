@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Developer\\RepublicsApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|solutionrelative:discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\discountcontext.presenter.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|solutionrelative:discountcontext.presenter\\discountcontext.presenter.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\endpoints\\republicendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|solutionrelative:discountcontext.presenter\\endpoints\\republicendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\republic\\getall\\getallrepublicqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\republic\\getall\\getallrepublicqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\services\\republic\\republicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.Presenter.csproj|solutionrelative:discountcontext.presenter\\services\\republic\\republicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{630AD3B3-7062-4F87-83F7-2C0F7F507094}|DiscountContext.Domain\\DiscountContext.Domain.csproj|c:\\developer\\republicsapp\\discountcontext.domain\\repositories\\irepublicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{630AD3B3-7062-4F87-83F7-2C0F7F507094}|DiscountContext.Domain\\DiscountContext.Domain.csproj|solutionrelative:discountcontext.domain\\repositories\\irepublicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\republic\\update\\updaterepubliccommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\republic\\update\\updaterepubliccommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\republic\\update\\updaterepubliccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\republic\\update\\updaterepubliccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\discount\\creatediscount\\creatediscountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\discount\\creatediscount\\creatediscountcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,115 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Program.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T11:33:10.582Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DiscountContext.Presenter",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\DiscountContext.Presenter.csproj",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\DiscountContext.Presenter.csproj",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\DiscountContext.Presenter.csproj",
-              "RelativeToolTip": "DiscountContext.Presenter\\DiscountContext.Presenter.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-25T11:32:51.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RepublicService.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Services\\Republic\\RepublicService.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Services\\Republic\\RepublicService.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Services\\Republic\\RepublicService.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Services\\Republic\\RepublicService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:47:25.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RepublicEndpoints.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:43:37.528Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GetAllRepublicQueryHandler.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\GetAll\\GetAllRepublicQueryHandler.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Republic\\GetAll\\GetAllRepublicQueryHandler.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\GetAll\\GetAllRepublicQueryHandler.cs",
-              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Republic\\GetAll\\GetAllRepublicQueryHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:39:55.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IRepublicRepository.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Domain\\Repositories\\IRepublicRepository.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Domain\\Repositories\\IRepublicRepository.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Domain\\Repositories\\IRepublicRepository.cs",
-              "RelativeToolTip": "DiscountContext.Domain\\Repositories\\IRepublicRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:43:27.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateRepublicCommandHandler.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommandHandler.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommandHandler.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommandHandler.cs",
-              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:41:20.937Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UpdateRepublicCommand.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommand.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommand.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommand.cs",
-              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Republic\\Update\\UpdateRepublicCommand.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-25T10:41:09.357Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateDiscountCommand.cs",
+              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\CreateDiscount\\CreateDiscountCommand.cs",
+              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Discount\\CreateDiscount\\CreateDiscountCommand.cs",
+              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\CreateDiscount\\CreateDiscountCommand.cs",
+              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Discount\\CreateDiscount\\CreateDiscountCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T12:11:19.089Z",
+              "EditorCaption": ""
             }
           ]
         },
