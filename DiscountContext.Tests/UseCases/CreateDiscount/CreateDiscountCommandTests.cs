@@ -1,4 +1,4 @@
-using DiscountContext.Domain.UseCases.Discount.CreateDiscount;
+using DiscountContext.Domain.UseCases.Discount.Create;
 
 namespace DiscountContext.Test.Commands
 {

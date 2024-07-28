@@ -1,33 +1,33 @@
 ﻿using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
-namespace DiscountContext.Domain.UseCases.GetAllStudents
+namespace DiscountContext.Domain.UseCases.GetAllStudents;
+
+public class GetAllStudentsQueryHandler : Notifiable<Notification>, IRequestHandler<GetAllStudentsQuery, ICommandResult<IList<Student>>>
 {
-    public class GetAllStudentsQueryHandler : Notifiable<Notification>, IHandler<GetAllStudentsQuery>
+    private readonly IStudentRepository _studentRepository;
+
+    public GetAllStudentsQueryHandler(IStudentRepository studentRepository)
     {
-        private readonly IStudentRepository _studentRepository;
+        _studentRepository = studentRepository;
+    }
 
-        public GetAllStudentsQueryHandler(IStudentRepository studentRepository)
+    public async Task<ICommandResult<IList<Student>>> Handle(GetAllStudentsQuery query, CancellationToken cancellationToken)
+    {
+        query.Validate();
+
+        if (!query.IsValid)
         {
-            _studentRepository = studentRepository;
+            return new CommandResult<IList<Student>>(null, (int)StatusCodes.BadRequest, "Invalid query data");
         }
 
-        public ICommandResult Handle(GetAllStudentsQuery query)
-        {
-            query.Validate();
+        IList<Student> students = await _studentRepository.GetAllAsync();
 
-            if (!query.IsValid)
-            {
-                return new CommandResult<IList<Entities.Student>>(false, "Invalid query data", null);
-            }
-
-            IList<Student> students = _studentRepository.GetAll();
-
-            return new CommandResult<IList<Entities.Student>>(true, "Students retrieved successfully", students);
-        }
+        return new CommandResult<IList<Student>>(students, (int)StatusCodes.OK, "Students retrieved successfully");
     }
 }

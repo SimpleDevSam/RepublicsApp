@@ -1,14 +1,14 @@
 ﻿using DiscountContext.Application.UseCases.Republic.Delete;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
-using PaymentContext.Domain.Commands;
 using MediatR;
+using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Republic
 {
-    public class DeleteRepublicHandler : Notifiable<Notification>, IRequestHandler<DeleteRepublicCommand,ICommandResult>
+    public class DeleteRepublicHandler : Notifiable<Notification>, IRequestHandler<DeleteRepublicCommand, ICommandResult>
     {
         private readonly IRepublicRepository _republicRepository;
 
@@ -17,26 +17,25 @@ namespace DiscountContext.Domain.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public async  Task<ICommandResult> Handle(DeleteRepublicCommand command, CancellationToken cancellationToken)
+        public async Task<ICommandResult> Handle(DeleteRepublicCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
             if (!command.IsValid)
             {
-                return new CommandResult<Entities.Republic>(false, "Invalid command data");
+                return new CommandResult<Entities.Republic>(null, (int)StatusCodes.BadRequest, "Invalid command data");
             }
 
-            var republic = _republicRepository.GetAsync(command.RepublicId);
+            var republic = await _republicRepository.GetAsync(command.RepublicId);
 
             if (republic == null)
             {
-                return new CommandResult<Entities.Republic>(false, "Republic not found");
+                return new CommandResult<Entities.Republic>(null, (int)StatusCodes.NotFound, "Republic not found");
             }
 
             await _republicRepository.DeleteAsync(command.RepublicId);
 
-            return new CommandResult<Entities.Republic>(true, "Republic successfully deleted");
+            return new CommandResult<Entities.Republic>(null, (int)StatusCodes.OK, "Republic successfully deleted");
         }
-
     }
 }

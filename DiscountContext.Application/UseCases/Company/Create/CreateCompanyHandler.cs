@@ -7,6 +7,7 @@ using Flunt.Notifications;
 using Flunt.Validations;
 using PaymentContext.Domain.Commands;
 using MediatR;
+using DiscountContext.Shared.StatusCodes;
 
 namespace DiscountContext.Domain.UseCases.Company.CreateCompany;
 
@@ -30,7 +31,7 @@ public class CreateCompanyHandler : Notifiable<Notification>, IRequestHandler<Cr
             {
                 AddNotifications(new Contract<CreateCompanyHandler>()
                         .Requires());
-                return new CommandResult<Entities.Company>(false, "Not possible to create company", null);
+                return new CommandResult<Entities.Company>( null, (int)StatusCodes.BadRequest, null);
             }
 
             var address = new Address(
@@ -53,7 +54,7 @@ public class CreateCompanyHandler : Notifiable<Notification>, IRequestHandler<Cr
 
             await _companyRepository.CreateAsync(company);
 
-            return new CommandResult<Entities.Company>(true, "Company was created", company);
+            return new CommandResult<Entities.Company>(company, (int)StatusCodes.Created, "Company created successfully.");
         }
 
     }

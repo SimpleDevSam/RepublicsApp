@@ -4,6 +4,7 @@ namespace DiscountContext.Shared.Commands
     {
         bool Success { get; }
         string Message { get; }
+        int Code { get; }
     }
 
     public interface ICommandResult<T> : ICommandResult

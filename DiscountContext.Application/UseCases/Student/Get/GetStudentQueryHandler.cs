@@ -1,12 +1,14 @@
-﻿using DiscountContext.Domain.Repositories;
+﻿using DiscountContext.Domain.Entities;
+using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.GetStudent
 {
-    public class GetStudentQueryHandler : Notifiable<Notification>, IHandler<GetStudentQuery>
+    public class GetStudentQueryHandler : Notifiable<Notification>, IRequestHandler<GetStudentQuery, ICommandResult<Student>>
     {
         private readonly IStudentRepository _studentRepository;
 
@@ -15,23 +17,23 @@ namespace DiscountContext.Domain.UseCases.GetStudent
             _studentRepository = studentRepository;
         }
 
-        public ICommandResult Handle(GetStudentQuery query)
+        public async Task<ICommandResult<Student>> Handle(GetStudentQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
             if (!query.IsValid)
             {
-                return new CommandResult<bool>(false, "Invalid query data");
+                return new CommandResult<Student>(null, (int)StatusCodes.BadRequest, "Invalid query data");
             }
 
-            var student = _studentRepository.Get(query.StudentId);
+            var student = await _studentRepository.GetAsync(query.StudentId);
 
             if (student == null)
             {
-                return new CommandResult<bool>(false, "Student not found");
+                return new CommandResult<Student>(null, (int)StatusCodes.NotFound, "Student not found");
             }
 
-            return new CommandResult<Entities.Student>(true, "Student retrieved successfully", student);
+            return new CommandResult<Student>(student, (int)StatusCodes.OK, "Student retrieved successfully");
         }
     }
 }

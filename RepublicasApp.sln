@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountContext.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountContext.Infrastructure", "DiscountContext.Infrastructure\DiscountContext.Infrastructure.csproj", "{443BE56F-E40E-4F39-AE3C-1FE976D25B73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountContext.Presenter", "DiscountContext.Presenter\DiscountContext.Presenter.csproj", "{F9407291-044E-404C-A943-4A7BAFF05262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountContext.API", "DiscountContext.Presenter\DiscountContext.API.csproj", "{F9407291-044E-404C-A943-4A7BAFF05262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

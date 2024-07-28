@@ -1,11 +1,10 @@
 using DiscountContext.Application.UseCases.Company.Delete;
-using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using MediatR;
 using PaymentContext.Domain.Commands;
-using System.Reflection.Metadata;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
@@ -23,19 +22,16 @@ namespace DiscountContext.Domain.UseCases.Company
             command.Validate();
 
             if (!command.IsValid)
-            {
-                return new CommandResult<Domain.Entities.Company>(false, "Invalid command data");
-            }
+                return new CommandResult<Entities.Company>(null,(int)StatusCodes.BadRequest, "Invalid input data");
 
-            var company = _companyRepository.GetAsync(command.CompanyId);
+            var company = await _companyRepository.GetAsync(command.CompanyId);
 
             if (company == null)
-            {
-                return new CommandResult<Domain.Entities.Company>(false, "Company not found");
-            }
+                return new CommandResult<Entities.Company>(null,(int)StatusCodes.NotFound, "Company not found");
+
             await _companyRepository.DeleteAsync(command.CompanyId);
 
-            return new CommandResult<Domain.Entities.Company>(true, "Company successfully deleted");
+            return new CommandResult<Entities.Company>(null,(int)StatusCodes.NoContent, "Company successfully deleted");
         }
 
     }

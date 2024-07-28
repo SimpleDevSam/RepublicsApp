@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.StatusCodes;
 using MediatR;
 using PaymentContext.Domain.Commands;
 
@@ -24,12 +25,12 @@ namespace DiscountContext.Application.UseCases.Republic
 
             if (!query.IsValid)
             {
-                return new CommandResult<IList<Domain.Entities.Republic>>(false, "Invalid query data");
+                return new CommandResult<IList<Domain.Entities.Republic>>(null, (int)StatusCodes.BadRequest, "Invalid query data");
             }
 
             var republics = await _republicRepository.GetAllAsync();
 
-            return new CommandResult<IList<Domain.Entities.Republic>>(true, "Republics retrieved successfully", republics);
+            return new CommandResult<IList<Domain.Entities.Republic>>(republics, (int)StatusCodes.OK, "Republics retrieved successfully");
         }
     }
 }

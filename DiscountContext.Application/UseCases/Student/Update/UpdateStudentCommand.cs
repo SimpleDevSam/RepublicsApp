@@ -1,4 +1,5 @@
-﻿using DiscountContext.Shared.Commands;
+﻿using DiscountContext.Domain.Entities;
+using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 using Microsoft.VisualBasic;
@@ -6,7 +7,7 @@ using System;
 
 namespace DiscountContext.Domain.UseCases.UpdateStudent
 {
-    public class UpdateStudentCommand : Notifiable<Notification>, ICommand
+    public class UpdateStudentCommand : Notifiable<Notification>, ICommand<ICommandResult<Student>>
     {
         public UpdateStudentCommand(string firstName, string lastName, string bornDate, string userName, string password, string email)
         {

@@ -3,7 +3,7 @@ using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.UseCases.Discount.CreateDiscount;
+namespace DiscountContext.Domain.UseCases.Discount.Create;
 
 public class CreateDiscountCommand : Notifiable<Notification>, ICommand<ICommandResult>
 {

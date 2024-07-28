@@ -2,13 +2,14 @@
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.UpdateStudent
 {
-    public class UpdateStudentCommandHandler : Notifiable<Notification>, IHandler<UpdateStudentCommand>
+    public class UpdateStudentCommandHandler : Notifiable<Notification>, IRequestHandler<UpdateStudentCommand, ICommandResult<Student>>
     {
         private readonly IStudentRepository _studentRepository;
 
@@ -17,30 +18,30 @@ namespace DiscountContext.Domain.UseCases.UpdateStudent
             _studentRepository = studentRepository;
         }
 
-        public ICommandResult Handle(UpdateStudentCommand command)
+        public async Task<ICommandResult<Student>> Handle(UpdateStudentCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
 
             if (!command.IsValid)
             {
-                return new CommandResult<bool>(false, "Invalid data", false);
+                return new CommandResult<Student>(null, (int)StatusCodes.BadRequest, "Invalid data");
             }
 
-            var student = _studentRepository.Get(command.StudentId);
+            var student = await _studentRepository.GetAsync(command.StudentId);
 
             if (student == null)
             {
-                return new CommandResult<bool>(false, "Student not found", false);
+                return new CommandResult<Student>(null, (int)StatusCodes.NotFound, "Student not found");
             }
 
             var name = new Name(command.FirstName, command.LastName);
             var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
-            var studentToBeUpdated = new Student(name, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
+            var studentToBeUpdated = new Student(name, birthDate, command.UserName, command.Password, command.Email);
 
             student.UpdateStudent(studentToBeUpdated);
-            _studentRepository.Update(student);
+            await _studentRepository.UpdateAsync(student);
 
-            return new CommandResult<Student>(true, "Student updated successfully", student);
+            return new CommandResult<Student>(student, (int)StatusCodes.OK, "Student updated successfully");
         }
     }
 }

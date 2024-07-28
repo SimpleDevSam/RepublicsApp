@@ -5,7 +5,7 @@ using System;
 
 namespace DiscountContext.Domain.UseCases.DeleteStudent
 {
-    public class DeleteStudentCommand : Notifiable<Notification>, ICommand
+    public class DeleteStudentCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public Guid StudentId { get; set; }
 

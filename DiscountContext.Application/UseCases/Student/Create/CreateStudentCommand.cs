@@ -4,7 +4,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Domain.UseCases.CreateStudent;
 
-public class CreateStudentCommand : Notifiable<Notification>, ICommand
+public class CreateStudentCommand : Notifiable<Notification>, ICommand<ICommandResult>
 {
     public CreateStudentCommand(string firstName, string lastName, string bornDate, string userName, string password, string email)
     {

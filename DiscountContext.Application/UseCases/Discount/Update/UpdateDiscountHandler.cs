@@ -1,14 +1,13 @@
-using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
-using System;
 
 namespace DiscountContext.Application.UseCases.Discount
 {
-    public class UpdateDiscountCommandHandler : Notifiable<Notification>, IHandler<UpdateDiscountCommand>
+    public class UpdateDiscountCommandHandler : Notifiable<Notification>, IRequestHandler<UpdateDiscountCommand, ICommandResult<Domain.Entities.Discount>>
     {
         private readonly IDiscountRepository _discountRepository;
         private readonly IStudentRepository _studentRepository;
@@ -24,34 +23,35 @@ namespace DiscountContext.Application.UseCases.Discount
             _companyRepository = companyRepository;
         }
 
-        public ICommandResult Handle(UpdateDiscountCommand command)
+        public async Task<ICommandResult<Domain.Entities.Discount>> Handle(UpdateDiscountCommand command, CancellationToken cancellationToken)
         {
             command.Validate();
+
             if (!command.IsValid)
-                return new CommandResult<Domain.Entities.Discount>(false, "Invalid command", null);
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.BadRequest, "Invalid command");
 
-            var discount = _discountRepository.Get(command.DiscountId);
+            var discount = await _discountRepository.GetAsync(command.DiscountId);
             if (discount == null)
-                return new CommandResult<Domain.Entities.Discount>(false, "Discount not found", null);
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.NotFound, "Discount not found");
 
-            var student = _studentRepository.Get(command.StudentId);
+            var student = await _studentRepository.GetAsync(command.StudentId);
             if (student == null)
-                return new CommandResult<Domain.Entities.Discount>(false, "Student not found", null);
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.NotFound, "Student not found");
 
-            var company = _companyRepository.Get(command.CompanyId);
+            var company = await _companyRepository.GetAsync(command.CompanyId);
             if (company == null)
-                return new CommandResult<Domain.Entities.Discount>(false, "Company not found", null);
-            
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.NotFound, "Company not found");
+
             var updatedDiscount = new Domain.Entities.Discount(student, company, command.ExpireDate, command.DiscountAmount, command.Quantity);
 
             discount.UpdateDiscount(updatedDiscount);
 
             if (!discount.IsValid)
-                return new CommandResult<Domain.Entities.Discount>(false, "Validation errors", null);
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.BadRequest, "Validation errors");
 
-            _discountRepository.Update(discount);
+            await _discountRepository.UpdateAsync(discount);
 
-            return new CommandResult<Domain.Entities.Discount>(true, "Discount updated successfully", discount);
+            return new CommandResult<Domain.Entities.Discount>(discount, (int)StatusCodes.OK, "Discount updated successfully");
         }
     }
 }

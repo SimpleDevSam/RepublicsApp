@@ -1,13 +1,13 @@
-using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
+using MediatR;
 using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Application.UseCases.Discount
 {
-    public class GetDiscountQueryHandler : Notifiable<Notification>, IHandler<GetDiscountQuery>
+    public class GetDiscountQueryHandler : Notifiable<Notification>, IRequestHandler<GetDiscountQuery, ICommandResult<Domain.Entities.Discount>>
     {
         private readonly IDiscountRepository _discountRepository;
 
@@ -16,23 +16,23 @@ namespace DiscountContext.Application.UseCases.Discount
             _discountRepository = discountRepository;
         }
 
-        public ICommandResult Handle(GetDiscountQuery query)
+        public async Task<ICommandResult<Domain.Entities.Discount>> Handle(GetDiscountQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
             if (!query.IsValid)
             {
-                return new CommandResult<Domain.Entities.Discount>(false, "Invalid query data");
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.BadRequest, "Invalid query data");
             }
 
-            var discount = _discountRepository.Get(query.DiscountId);
+            var discount = await _discountRepository.GetAsync(query.DiscountId);
 
             if (discount == null)
             {
-                return new CommandResult<Domain.Entities.Discount>(false, "Discount not found");
+                return new CommandResult<Domain.Entities.Discount>(null, (int)StatusCodes.NotFound, "Discount not found");
             }
 
-            return new CommandResult<Domain.Entities.Discount>(true, "Discount retrieved successfully", discount);
+            return new CommandResult<Domain.Entities.Discount>(discount, (int)StatusCodes.OK, "Discount retrieved successfully");
         }
     }
 }

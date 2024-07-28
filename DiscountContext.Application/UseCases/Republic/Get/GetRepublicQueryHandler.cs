@@ -1,6 +1,6 @@
 ﻿using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using MediatR;
 using PaymentContext.Domain.Commands;
@@ -16,24 +16,23 @@ namespace DiscountContext.Application.UseCases.Republic
             _republicRepository = republicRepository;
         }
 
-        public async  Task<ICommandResult<Domain.Entities.Republic>> Handle(GetRepublicQuery query, CancellationToken cancellationToken)
+        public async Task<ICommandResult<Domain.Entities.Republic>> Handle(GetRepublicQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
             if (!query.IsValid)
             {
-                return new CommandResult<Domain.Entities.Republic>(false, "Invalid query data");
+                return new CommandResult<Domain.Entities.Republic>(null, (int)StatusCodes.BadRequest, "Invalid query data");
             }
 
             var republic = await _republicRepository.GetAsync(query.RepublicId);
 
             if (republic == null)
             {
-                return new CommandResult<Domain.Entities.Republic>(false, "Republic not found");
+                return new CommandResult<Domain.Entities.Republic>(null, (int)StatusCodes.NotFound, "Republic not found");
             }
 
-            return new CommandResult<Domain.Entities.Republic>(true, "Republic retrieved successfully", republic);
+            return new CommandResult<Domain.Entities.Republic>(republic, (int)StatusCodes.OK, "Republic retrieved successfully");
         }
-
     }
 }

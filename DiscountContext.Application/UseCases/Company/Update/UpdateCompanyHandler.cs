@@ -3,6 +3,7 @@ using DiscountContext.Domain.Enums;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using MediatR;
 using PaymentContext.Domain.Commands;
@@ -24,14 +25,14 @@ namespace DiscountContext.Domain.UseCases.Company
 
             if (!command.IsValid)
             {
-                return new CommandResult<Entities.Company>(false, "Invalid data", null);
+                return new CommandResult<Entities.Company>(null, (int)StatusCodes.BadRequest, "Invalid input data");
             }
 
             var company = await _companyRepository.GetAsync(command.CompanyId);
 
             if (company == null)
             {
-                return new CommandResult<Entities.Company>(false, "Company not found", null);
+                return new CommandResult<Entities.Company>(null, (int)StatusCodes.NotFound, "Company not found");
             }
 
             company.UpdateDetails(
@@ -51,7 +52,7 @@ namespace DiscountContext.Domain.UseCases.Company
 
            await  _companyRepository.UpdateAsync(company);
 
-            return new CommandResult<Entities.Company>(true, "Company updated successfully", company);
+            return new CommandResult<Entities.Company>(company, (int)StatusCodes.OK, "Company updated successfully");
         }
 
     }

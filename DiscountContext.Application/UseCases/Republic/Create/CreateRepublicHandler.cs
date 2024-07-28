@@ -1,56 +1,52 @@
 using DiscountContext.Application.UseCases.Republic.Create;
-using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
-using DiscountContext.Shared.Handlers;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using Flunt.Validations;
 using PaymentContext.Domain.Commands;
 using MediatR;
 
-namespace DiscountContext.Application.UseCases.Create;
-
-public class CreateRepublicHandler : Notifiable<Notification>,
-        IRequestHandler<CreateRepublicCommand,ICommandResult>
+namespace DiscountContext.Application.UseCases.Create
 {
-    private IRepublicRepository _republicRepository { get; set; }
-    public CreateRepublicHandler(IRepublicRepository RepublicRepository)
+    public class CreateRepublicHandler : Notifiable<Notification>, IRequestHandler<CreateRepublicCommand, ICommandResult>
     {
-        _republicRepository = RepublicRepository;
-    }
-
-    public async Task<ICommandResult>  Handle(CreateRepublicCommand command, CancellationToken cancellationToken)
-    {
-
-        command.Validate();
-
-        if (!command.IsValid)
+        private IRepublicRepository _republicRepository { get; set; }
+        public CreateRepublicHandler(IRepublicRepository republicRepository)
         {
-            AddNotifications(new Contract<CreateRepublicHandler>()
-                    .Requires());
-            return new CommandResult<Domain.Entities.Republic>(false, "Not possible to add Republic");
+            _republicRepository = republicRepository;
         }
-        var address = new Address(
-            command.Street,
-            command.Number,
-            command.Neighbourhood,
-            command.City,
-            command.State,
-            command.Country,
-            command.ZipCode
+
+        public async Task<ICommandResult> Handle(CreateRepublicCommand command, CancellationToken cancellationToken)
+        {
+            command.Validate();
+
+            if (!command.IsValid)
+            {
+                AddNotifications(new Contract<CreateRepublicHandler>()
+                        .Requires());
+                return new CommandResult<Domain.Entities.Republic>(null, (int)StatusCodes.BadRequest, "Invalid command data");
+            }
+
+            var address = new Address(
+                command.Street,
+                command.Number,
+                command.Neighbourhood,
+                command.City,
+                command.State,
+                command.Country,
+                command.ZipCode
             );
 
-        var Republic = new Domain.Entities.Republic(
-            command.Name,
-            address
-        );
+            var republic = new Domain.Entities.Republic(
+                command.Name,
+                address
+            );
 
-        await _republicRepository.CreateAsync(Republic);
+            await _republicRepository.CreateAsync(republic);
 
-        return new CommandResult<Domain.Entities.Republic>(true, "Republic was created");
+            return new CommandResult<Domain.Entities.Republic>(republic, (int)StatusCodes.OK, "Republic was created successfully");
+        }
     }
-
 }
-
-

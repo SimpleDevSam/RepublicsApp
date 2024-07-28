@@ -1,4 +1,4 @@
-using DiscountContext.Domain.UseCases.Republic.Create;
+using DiscountContext.Application.UseCases.Republic.Create;
 
 namespace DiscountContext.Test.Commands
 {
@@ -11,7 +11,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = null,
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -26,7 +25,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -45,7 +43,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = null,
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -60,7 +57,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -79,7 +75,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = null,
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -94,7 +89,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -113,7 +107,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = null,
                 Neighbourhood = "Centro",
@@ -128,7 +121,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "",
                 Neighbourhood = "Centro",
@@ -147,7 +139,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = null,
@@ -162,7 +153,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "",
@@ -181,7 +171,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -196,7 +185,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -215,7 +203,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -230,7 +217,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -249,7 +235,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -264,7 +249,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -283,7 +267,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -298,7 +281,6 @@ namespace DiscountContext.Test.Commands
             command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",
@@ -317,7 +299,6 @@ namespace DiscountContext.Test.Commands
             var command = new CreateRepublicCommand
             {
                 Name = "Republic Name",
-                BornDate = "02/01/1998",
                 Street = "Main Street",
                 Number = "123",
                 Neighbourhood = "Centro",

@@ -2,6 +2,7 @@
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using MediatR;
 using PaymentContext.Domain.Commands;
@@ -23,17 +24,17 @@ namespace DiscountContext.Domain.UseCases.Company
 
             if (!query.IsValid)
             {
-                return new CommandResult<Entities.Company>(false, "Invalid query", null);
+                return new CommandResult<Entities.Company>(null, (int)StatusCodes.BadRequest , "Invalid query");
             }
 
             var company = await  _companyRepository.GetAsync(query.CompanyId);
 
             if (company == null)
             {
-                return new CommandResult<Entities.Company>(false, "Company not found", null);
+                return new CommandResult<Entities.Company>(null, (int)StatusCodes.NotFound, "Company not found");
             }
 
-            return new CommandResult<Entities.Company>(true, "Company retrieved successfully", company);
+            return new CommandResult<Entities.Company>(company, (int)StatusCodes.OK, "Company retrieved successfully");
         }
 
     }

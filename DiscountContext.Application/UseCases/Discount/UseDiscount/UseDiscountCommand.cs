@@ -6,7 +6,7 @@ using Flunt.Validations;
 
 namespace DiscountContext.Domain.UseCases.CreateDiscount;
 
-public class UseDiscountCommand : Notifiable<Notification>, ICommand
+public class UseDiscountCommand : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Discount>>
 {
     public UseDiscountCommand(Guid discoundId)
     {
@@ -17,7 +17,7 @@ public class UseDiscountCommand : Notifiable<Notification>, ICommand
     
     public void Validate()
         {
-            AddNotifications(new Contract<CreateDiscountCommand>()
+            AddNotifications(new Contract<UseDiscountCommand>()
                 .Requires()
                 .IsNotNullOrEmpty(DiscountId.ToString(),"Discount.DiscountId","Discount id cannot be empty")
                 .AreNotEquals(DiscountId,Guid.Empty,"Discount.DiscountId","Discount id cannot be empty")

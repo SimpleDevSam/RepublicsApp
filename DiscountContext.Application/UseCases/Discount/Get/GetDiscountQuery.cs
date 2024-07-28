@@ -1,3 +1,4 @@
+using DiscountContext.Domain.Entities;
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
@@ -5,7 +6,7 @@ using System;
 
 namespace DiscountContext.Application.UseCases.Discount
 {
-    public class GetDiscountQuery : Notifiable<Notification>, ICommand
+    public class GetDiscountQuery : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Discount>>
     {
         public Guid DiscountId { get; set; }
 

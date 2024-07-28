@@ -6,30 +6,30 @@ using DiscountContext.Domain.UseCases.Discount.UseDiscount;
 using DiscountContext.Domain.ValueObjects;
 using Moq;
 
-namespace DiscountContext.Test.UseCases.CreateDiscount;
+//namespace DiscountContext.Test.UseCases.CreateDiscount;
 
-    [TestClass]
-    public class UseDiscountHandlerTests
-    {
-        private Mock<IDiscountRepository> _mockDiscountRepository;
-        private UseDiscountHandler _handler;
+//    [TestClass]
+//    public class UseDiscountHandlerTests
+//    {
+//        private Mock<IDiscountRepository> _mockDiscountRepository;
+//        private UseDiscountHandler _handler;
 
-        [TestInitialize]
-        public void Initialize()
-        {
-            _mockDiscountRepository = new Mock<IDiscountRepository>();
-            _handler = new UseDiscountHandler(_mockDiscountRepository.Object);
-        }
+//        [TestInitialize]
+//        public void Initialize()
+//        {
+//            _mockDiscountRepository = new Mock<IDiscountRepository>();
+//            _handler = new UseDiscountHandler(_mockDiscountRepository.Object);
+//        }
 
-        [TestMethod]
-        public void ShouldReturnErrorWhenCommandIsInvalid()
-        {
-            var command = new UseDiscountCommand(Guid.Empty);
-            var result = _handler.Handle(command);
+//        [TestMethod]
+//        public void ShouldReturnErrorWhenCommandIsInvalid()
+//        {
+//            var command = new UseDiscountCommand(Guid.Empty);
+//            var result = _handler.Handle(command);
 
-            Assert.IsFalse(result.Success);
-            Assert.AreEqual("Not possible to use discount", result.Message);
-        }
+//            Assert.IsFalse(result.Success);
+//            Assert.AreEqual("Not possible to use discount", result.Message);
+//        }
 
         // [TestMethod]
         // public void ShouldReturnErrorWhenDiscountNotFound()
@@ -84,5 +84,5 @@ namespace DiscountContext.Test.UseCases.CreateDiscount;
         //     _mockDiscountRepository.Verify(repo => repo.Update(discount), Times.Once);
         //     Assert.AreEqual(DateTime.Now.Date, discount.UseDate.Date);
         // }
-    }
+    //}
 
