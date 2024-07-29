@@ -12,6 +12,16 @@ builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
+app.UseExceptionHandler(exceptionHandlerApp
+    => exceptionHandlerApp.Run(async context
+        => await Results.Problem()
+                     .ExecuteAsync(context)));
+
+app.MapGet("/exception", () =>
+{
+    throw new InvalidOperationException("Sample Exception");
+}).WithOpenApi();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

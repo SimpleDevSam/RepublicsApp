@@ -1,5 +1,5 @@
-using DiscountContext.Application.UseCases.Company.Delete;
 using DiscountContext.Domain.Repositories;
+using DiscountContext.Domain.UseCases.DeleteStudent;
 using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
@@ -24,12 +24,12 @@ namespace DiscountContext.Domain.UseCases.Company
             if (!command.IsValid)
                 return new CommandResult<Entities.Company>(null,(int)StatusCodes.BadRequest, "Invalid input data");
 
-            var company = await _companyRepository.GetAsync(command.CompanyId);
+            var company = await _companyRepository.GetAsync(command.StudentId);
 
             if (company == null)
                 return new CommandResult<Entities.Company>(null,(int)StatusCodes.NotFound, "Company not found");
 
-            await _companyRepository.DeleteAsync(command.CompanyId);
+            await _companyRepository.DeleteAsync(command.StudentId);
 
             return new CommandResult<Entities.Company>(null,(int)StatusCodes.NoContent, "Company successfully deleted");
         }

@@ -4,13 +4,13 @@ using Flunt.Validations;
 
 namespace DiscountContext.Application.UseCases.Company.Delete
 {
-    public class DeleteStudentCommand : Notifiable<Notification>, ICommand<ICommandResult>
+    public class DeleteCompanyCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {
         public Guid CompanyId { get; set; }
 
         public void Validate()
         {
-            AddNotifications(new Contract<DeleteStudentCommand>()
+            AddNotifications(new Contract<DeleteCompanyCommand>()
                 .Requires()
                 .IsNotEmpty(CompanyId, "CompanyId", "Company ID cannot be empty")
             );

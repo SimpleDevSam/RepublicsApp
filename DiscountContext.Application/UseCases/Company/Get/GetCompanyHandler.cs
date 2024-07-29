@@ -9,7 +9,7 @@ using PaymentContext.Domain.Commands;
 
 namespace DiscountContext.Domain.UseCases.Company
 {
-    public class GetStudentQueryHandler : Notifiable<Notification>, IRequestHandler<GetStudentQuery, ICommandResult<Entities.Company>>
+    public class GetStudentQueryHandler : Notifiable<Notification>, IRequestHandler<GetCompanyQuery, ICommandResult<Entities.Company>>
     {
         private readonly ICompanyRepository _companyRepository;
 
@@ -18,7 +18,7 @@ namespace DiscountContext.Domain.UseCases.Company
             _companyRepository = companyRepository;
         }
 
-        public async Task<ICommandResult<Entities.Company>> Handle(GetStudentQuery query, CancellationToken cancellationToken)
+        public async Task<ICommandResult<Entities.Company>> Handle(GetCompanyQuery query, CancellationToken cancellationToken)
         {
             query.Validate();
 
