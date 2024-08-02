@@ -1,20 +1,22 @@
-﻿using DiscountContext.Application.UseCases.Republic;
-using DiscountContext.Application.UseCases.Republic.Create;
-using DiscountContext.Application.UseCases.Republic.Delete;
+﻿using DiscountContext.Application.UseCases.Company;
+using DiscountContext.Application.UseCases.Company.Delete;
+using DiscountContext.Application.UseCases.Discount;
+using DiscountContext.Application.UseCases.Discount.Delete;
+using DiscountContext.Domain.UseCases.Discount.Create;
 using DiscountContext.Presenter.Abstractions;
 using MediatR;
 
 namespace DiscountContext.Presenter.Endpoints
 {
-    public class RepublicEndpoints : IEndPointDefinition
+    public class CompanyEndpoints : IEndPointDefinition
     {
         public void RegisterEndpoints(WebApplication app)
         {
-            var republic = app.MapGroup("/api/republics");
+            var company = app.MapGroup("/api/companies");
 
-            republic.MapGet("/", async (IMediator mediator) =>
+            company.MapGet("/", async (IMediator mediator) =>
             {
-                var query = new GetAllRepublicsQuery();
+                var query = new GetAllCompaniesQuery();
                 var response = await mediator.Send(query);
 
                 if (!response.Success && response.Code == 400)
@@ -22,12 +24,12 @@ namespace DiscountContext.Presenter.Endpoints
 
                 return Results.Ok(response);
             })
-            .WithName("GetAll Republics")
+            .WithName("GetAll Companies")
             .WithOpenApi();
 
-            republic.MapGet("/{id}", async (Guid id, IMediator mediator) =>
+            company.MapGet("/{id}", async (Guid id, IMediator mediator) =>
             {
-                var query = new GetRepublicQuery { RepublicId = id };
+                var query = new GetCompanyQuery { CompanyId = id };
                 var response = await mediator.Send(query);
 
                 if (!response.Success && response.Code == 400)
@@ -37,10 +39,10 @@ namespace DiscountContext.Presenter.Endpoints
 
                 return Results.Ok(response);
             })
-            .WithName("Get Republic")
+            .WithName("Get Company")
             .WithOpenApi();
 
-            republic.MapPost("/", async (CreateRepublicCommand command, IMediator mediator) =>
+            company.MapPost("/", async (CreateCompanyCommand command, IMediator mediator) =>
             {
                 var response = await mediator.Send(command);
 
@@ -49,27 +51,12 @@ namespace DiscountContext.Presenter.Endpoints
 
                 return Results.Ok(response);
             })
-            .WithName("Create Republic")
+            .WithName("Create Company")
             .WithOpenApi();
 
-            republic.MapDelete("/{id}", async (Guid id, IMediator mediator) =>
+            company.MapDelete("/{id}", async (Guid id, IMediator mediator) =>
             {
-                var command = new DeleteRepublicCommand { RepublicId = id };
-                var response = await mediator.Send(command);
-
-                if (!response.Success && response.Code == 400)
-                    return Results.BadRequest(response);
-                if (!response.Success && response.Code == 404)
-                    return Results.NotFound(response);
-
-                return Results.Ok(response);
-            })
-            .WithName("Delete Republic")
-            .WithOpenApi();
-
-            republic.MapPut("/", async (Guid id, UpdateRepublicCommand command, IMediator mediator) =>
-            {
-                command.RepublicId = id;
+                var command = new DeleteCompanyCommand { CompanyId = id };
                 var response = await mediator.Send(command);
 
                 if (!response.Success && response.Code == 400)
@@ -79,7 +66,22 @@ namespace DiscountContext.Presenter.Endpoints
 
                 return Results.Ok(response);
             })
-            .WithName("Update Republic")
+            .WithName("Delete Company")
+            .WithOpenApi();
+
+            company.MapPut("/", async (Guid id, UpdateCompanyCommand command, IMediator mediator) =>
+            {
+                command.CompanyId = id;
+                var response = await mediator.Send(command);
+
+                if (!response.Success && response.Code == 400)
+                    return Results.BadRequest(response);
+                if (!response.Success && response.Code == 404)
+                    return Results.NotFound(response);
+
+                return Results.Ok(response);
+            })
+            .WithName("Update Company")
             .WithOpenApi();
         }
     }

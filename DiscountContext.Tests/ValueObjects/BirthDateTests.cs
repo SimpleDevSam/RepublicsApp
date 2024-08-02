@@ -1,5 +1,6 @@
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.ValueObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DiscountContext.Test.ValueObjects;
 

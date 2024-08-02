@@ -1,4 +1,5 @@
 using DiscountContext.Domain.UseCases.Discount.Create;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DiscountContext.Test.Commands
 {

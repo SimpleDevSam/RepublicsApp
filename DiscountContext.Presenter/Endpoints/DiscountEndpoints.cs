@@ -1,31 +1,33 @@
-﻿using DiscountContext.Domain.UseCases.CreateStudent;
-using DiscountContext.Domain.UseCases.DeleteStudent;
-using DiscountContext.Domain.UseCases.GetAllStudents;
-using DiscountContext.Domain.UseCases.GetStudent;
-using DiscountContext.Domain.UseCases.UpdateStudent;
+﻿using DiscountContext.Application.UseCases.Discount;
+using DiscountContext.Application.UseCases.Discount.Delete;
+using DiscountContext.Domain.UseCases.Discount.Create;
 using DiscountContext.Presenter.Abstractions;
 using MediatR;
 
 namespace DiscountContext.Presenter.Endpoints
 {
-    public class StudentEndpoints : IEndPointDefinition
+    public class DiscountEndpoints : IEndPointDefinition
     {
         public void RegisterEndpoints(WebApplication app)
         {
-            var student = app.MapGroup("/api/student");
+            var discount = app.MapGroup("/api/discounts");
 
-            student.MapGet("/", async (IMediator mediator) =>
+            discount.MapGet("/", async (IMediator mediator) =>
             {
-                var query = new GetAllStudentsQuery();
+                var query = new GetAllDiscountsQuery();
                 var response = await mediator.Send(query);
-                return response.Success ? Results.Ok(response) : Results.NotFound();
+
+                if (!response.Success && response.Code == 400)
+                    return Results.BadRequest(response);
+
+                return Results.Ok(response);
             })
-            .WithName("GetAll Students")
+            .WithName("GetAll Discounts")
             .WithOpenApi();
 
-            student.MapGet("/{id}", async (Guid id, IMediator mediator) =>
+            discount.MapGet("/{id}", async (Guid id, IMediator mediator) =>
             {
-                var query = new GetStudentQuery { StudentId = id };
+                var query = new GetDiscountQuery { DiscountId = id };
                 var response = await mediator.Send(query);
 
                 if (!response.Success && response.Code == 400)
@@ -34,44 +36,50 @@ namespace DiscountContext.Presenter.Endpoints
                     return Results.NotFound(response);
 
                 return Results.Ok(response);
-
             })
-            .WithName("Get Student")
+            .WithName("Get Discount")
             .WithOpenApi();
 
-            student.MapPost("/", async (CreateStudentCommand command, IMediator mediator) =>
+            discount.MapPost("/", async (CreateDiscountCommand command, IMediator mediator) =>
             {
                 var response = await mediator.Send(command);
+
                 if (!response.Success && response.Code == 400)
                     return Results.BadRequest(response);
 
                 return Results.Ok(response);
             })
-            .WithName("Create Student")
+            .WithName("Create Discount")
             .WithOpenApi();
 
-            student.MapDelete("/{id}", async (Guid id, IMediator mediator) =>
+            discount.MapDelete("/{id}", async (Guid id, IMediator mediator) =>
             {
-                var command = new DeleteStudentCommand { StudentId = id };
+                var command = new DeleteDiscountCommand { DiscountId = id };
                 var response = await mediator.Send(command);
+
                 if (!response.Success && response.Code == 400)
                     return Results.BadRequest(response);
+                if (!response.Success && response.Code == 404)
+                    return Results.NotFound(response);
 
                 return Results.Ok(response);
             })
-            .WithName("Delete Student")
+            .WithName("Delete Discount")
             .WithOpenApi();
 
-            student.MapPut("/", async (Guid id, UpdateStudentCommand command, IMediator mediator) =>
+            discount.MapPut("/", async (Guid id, UpdateDiscountCommand command, IMediator mediator) =>
             {
-                command.StudentId = id;
+                command.DiscountId = id;
                 var response = await mediator.Send(command);
+
                 if (!response.Success && response.Code == 400)
                     return Results.BadRequest(response);
+                if (!response.Success && response.Code == 404)
+                    return Results.NotFound(response);
 
                 return Results.Ok(response);
             })
-            .WithName("Update Student")
+            .WithName("Update Discount")
             .WithOpenApi();
         }
     }

@@ -22,6 +22,7 @@ namespace DiscountContext.Infrastructure
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IRepublicRepository, RepublicRepository>(); 
 
+
             
         }
 
