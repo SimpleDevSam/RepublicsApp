@@ -17,8 +17,6 @@ namespace DiscountContext.Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             // Add Repositories
-            services.AddScoped<ICompanyRepository, CompanyRepository>();
-            services.AddScoped<IDiscountRepository, DiscountRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IRepublicRepository, RepublicRepository>(); 
 
