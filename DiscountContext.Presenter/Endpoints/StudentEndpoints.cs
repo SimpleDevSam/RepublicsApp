@@ -12,7 +12,7 @@ namespace DiscountContext.Presenter.Endpoints
     {
         public void RegisterEndpoints(WebApplication app)
         {
-            var student = app.MapGroup("/api/student");
+            var student = app.MapGroup("/api/student").RequireAuthorization();
 
             student.MapGet("/", async (IMediator mediator) =>
             {
@@ -27,7 +27,14 @@ namespace DiscountContext.Presenter.Endpoints
             {
                 var query = new GetStudentQuery { StudentId = id };
                 var response = await mediator.Send(query);
-                return response.Data != null ? Results.Ok(response.Data) : Results.NotFound();
+
+                if (!response.Success && response.Code == 400)
+                    return Results.BadRequest(response);
+                if (!response.Success && response.Code == 404)
+                    return Results.NotFound(response);
+
+                return Results.Ok(response);
+
             })
             .WithName("Get Student")
             .WithOpenApi();

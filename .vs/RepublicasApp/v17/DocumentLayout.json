@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Developer\\RepublicsApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\endpoints\\republicendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\endpoints\\republicendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\endpoints\\discountendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\endpoints\\discountendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\endpoints\\studentendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\endpoints\\studentendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\customerrors\\internalservererror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\customerrors\\internalservererror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\discount\\delete\\deletediscounthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\discount\\delete\\deletediscounthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 193,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,59 +27,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StudentEndpoints.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\StudentEndpoints.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Endpoints\\StudentEndpoints.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\StudentEndpoints.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Endpoints\\StudentEndpoints.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
+              "Title": "DeleteDiscountHandler.cs",
+              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T13:55:38.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Program.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T13:53:11.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InternalServerError.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\CustomErrors\\InternalServerError.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\CustomErrors\\InternalServerError.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\CustomErrors\\InternalServerError.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\CustomErrors\\InternalServerError.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T13:26:16.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T14:36:17.896Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RepublicEndpoints.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Endpoints\\RepublicEndpoints.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAA5AAAA",
+              "Title": "DiscountEndpoints.cs",
+              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "RelativeToolTip": "DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T11:36:40.737Z",
+              "WhenOpened": "2024-08-23T14:35:55.518Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 200,
+          "DockedWidth": 193,
           "SelectedChildIndex": -1,
           "Children": [
             {
