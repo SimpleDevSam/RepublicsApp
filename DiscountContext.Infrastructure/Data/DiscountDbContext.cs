@@ -8,7 +8,6 @@ namespace DiscountContext.Infrastructure.Data;
 
 public class DiscountDbContext : IdentityDbContext <User,IdentityRole<long>, long>
 {
-
     public DiscountDbContext(DbContextOptions<DiscountDbContext> options)
     : base(options)
     {

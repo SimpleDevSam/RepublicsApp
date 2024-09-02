@@ -10,7 +10,7 @@ namespace DiscountContext.Presenter.Endpoints
     {
         public void RegisterEndpoints(WebApplication app)
         {
-            var republic = app.MapGroup("/api/republics");
+            var republic = app.MapGroup("/api/republics").RequireAuthorization();
 
             republic.MapGet("/", async (IMediator mediator) =>
             {

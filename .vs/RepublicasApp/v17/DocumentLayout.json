@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "C:\\Developer\\RepublicsApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\endpoints\\discountendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\endpoints\\discountendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|c:\\developer\\republicsapp\\discountcontext.infrastructure\\data\\discountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|solutionrelative:discountcontext.infrastructure\\data\\discountdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{630AD3B3-7062-4F87-83F7-2C0F7F507094}|DiscountContext.Domain\\DiscountContext.Domain.csproj|c:\\developer\\republicsapp\\discountcontext.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{630AD3B3-7062-4F87-83F7-2C0F7F507094}|DiscountContext.Domain\\DiscountContext.Domain.csproj|solutionrelative:discountcontext.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|c:\\developer\\republicsapp\\discountcontext.infrastructure\\data\\discountdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|solutionrelative:discountcontext.infrastructure\\data\\discountdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|c:\\developer\\republicsapp\\discountcontext.infrastructure\\discountcontext.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{443BE56F-E40E-4F39-AE3C-1FE976D25B73}|DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj|solutionrelative:discountcontext.infrastructure\\discountcontext.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\discountcontext.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\discountcontext.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|c:\\developer\\republicsapp\\discountcontext.presenter\\discountcontext.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{F9407291-044E-404C-A943-4A7BAFF05262}|DiscountContext.Presenter\\DiscountContext.API.csproj|solutionrelative:discountcontext.presenter\\discountcontext.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|c:\\developer\\republicsapp\\discountcontext.application\\usecases\\discount\\delete\\deletediscounthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{614C32B1-D594-4812-B0C1-34F21BC624E4}|DiscountContext.Application\\DiscountContext.Application.csproj|solutionrelative:discountcontext.application\\usecases\\discount\\delete\\deletediscounthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 193,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,99 +26,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DiscountDbContextFactory.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\Data\\DiscountDbContextFactory.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Infrastructure\\Data\\DiscountDbContextFactory.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\Data\\DiscountDbContextFactory.cs",
-              "RelativeToolTip": "DiscountContext.Infrastructure\\Data\\DiscountDbContextFactory.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:22:22.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DiscountDbContext.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\Data\\DiscountDbContext.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Infrastructure\\Data\\DiscountDbContext.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\Data\\DiscountDbContext.cs",
-              "RelativeToolTip": "DiscountContext.Infrastructure\\Data\\DiscountDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Title": "DeleteDiscountHandler.cs",
+              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "RelativeDocumentMoniker": "DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "RelativeToolTip": "DiscountContext.Application\\UseCases\\Discount\\Delete\\DeleteDiscountHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:14:00.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-23T14:36:17.896Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Program.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Program.cs",
-              "RelativeToolTip": "DiscountContext.Presenter\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAgAAAA",
+              "Title": "DiscountEndpoints.cs",
+              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "RelativeDocumentMoniker": "DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "RelativeToolTip": "DiscountContext.Presenter\\Endpoints\\DiscountEndpoints.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:11:48.841Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DiscountContext.Application",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\DiscountContext.Application.csproj",
-              "RelativeDocumentMoniker": "DiscountContext.Application\\DiscountContext.Application.csproj",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Application\\DiscountContext.Application.csproj",
-              "RelativeToolTip": "DiscountContext.Application\\DiscountContext.Application.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-02T10:10:27.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DiscountContext.API",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\DiscountContext.API.csproj",
-              "RelativeDocumentMoniker": "DiscountContext.Presenter\\DiscountContext.API.csproj",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Presenter\\DiscountContext.API.csproj",
-              "RelativeToolTip": "DiscountContext.Presenter\\DiscountContext.API.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-02T10:10:20.535Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "DiscountContext.Domain\\Entities\\User.cs",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Domain\\Entities\\User.cs",
-              "RelativeToolTip": "DiscountContext.Domain\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAUAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T10:07:44.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DiscountContext.Infrastructure.csproj",
-              "DocumentMoniker": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj",
-              "ToolTip": "C:\\Developer\\RepublicsApp\\DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj",
-              "RelativeToolTip": "DiscountContext.Infrastructure\\DiscountContext.Infrastructure.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-02T09:05:41.946Z",
+              "WhenOpened": "2024-08-23T14:35:55.518Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 200,
+          "DockedWidth": 193,
           "SelectedChildIndex": -1,
           "Children": [
             {

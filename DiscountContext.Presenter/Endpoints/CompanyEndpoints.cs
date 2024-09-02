@@ -1,8 +1,5 @@
 ﻿using DiscountContext.Application.UseCases.Company;
 using DiscountContext.Application.UseCases.Company.Delete;
-using DiscountContext.Application.UseCases.Discount;
-using DiscountContext.Application.UseCases.Discount.Delete;
-using DiscountContext.Domain.UseCases.Discount.Create;
 using DiscountContext.Presenter.Abstractions;
 using MediatR;
 
@@ -12,7 +9,7 @@ namespace DiscountContext.Presenter.Endpoints
     {
         public void RegisterEndpoints(WebApplication app)
         {
-            var company = app.MapGroup("/api/companies");
+            var company = app.MapGroup("/api/companies").RequireAuthorization();
 
             company.MapGet("/", async (IMediator mediator) =>
             {
