@@ -1,40 +1,61 @@
+using DiscountContext.Domain.Enums;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Entities;
 using Flunt.Validations;
 
-namespace DiscountContext.Domain.Entities
+namespace DiscountContext.Domain.Entities;
+
+public class Student : Entity
 {
-    public class Student : Entity
+    public Student() { }
+    public Student(Guid userId, StudentAddress address, ECoursesType course, EStudentType studentType, Guid? republicId = null)
     {
-        public Student() { }
+        UserId = userId;
+        Address = address;
+        CourseType = course;
+        StudentType = studentType;
+        RepublicId = republicId;
 
-        public Student(Name name, BirthDate birthDate, string email, string password, string username)
-        {
-            Name = name;
-            BirthDate = birthDate;
-            Email = email;
-            Password = password;
-            Username = username;
+        AddNotifications(address);
+        AddNotifications(new Contract<Student>()
+        .Requires()
+        .IsNotNullOrEmpty(userId.ToString(), "Student.UserId", "Must have an userId")
+        .IsNotNullOrEmpty(course.ToString(), "Student.CourseType", "Must have an course type")
+        .IsNotNullOrEmpty(studentType.ToString(), "Student.StudentType", "Must have an studentType"));
+    }
 
-            AddNotifications(name, birthDate);
-        }
+    public Guid UserId { get; private set; }
+    public StudentAddress Address { get; private set; }
+    public Guid? RepublicId { get; private set; }
+    public ECoursesType CourseType { get; private set; }
+    public EStudentType StudentType { get; private set; }
 
-        public Name Name { get; private set; }
-        public BirthDate BirthDate { get; private set; }
-        public Republic? Republic { get; private set; }
-        public string Username { get; private set; }
-        public string Email { get; private set; }
-        public string Password { get; private set; }
+    public void UpdateStudent(Student student)
+    {
+        Address = student.Address;
+        CourseType = student.CourseType;
+        RepublicId = student.RepublicId;
+        StudentType = student.StudentType;
+        AddNotifications(student);
+    }
+    
+    public void SetAddress(StudentAddress address)
+    {
+        Address = address;
+    }
 
-        public void UpdateStudent(Student student)
-        {
-            Name = student.Name;
-            BirthDate = student.BirthDate;
-            Republic = student.Republic;
-            Username = student.Username;
-            Email = student.Email;
-            Password = student.Password;
-            AddNotifications(student);
-        }
+    public void SetRepublicId(Guid republicId)
+    {
+        RepublicId = republicId;
+    }
+
+    public void SetCourseType(ECoursesType courseType)
+    {
+        CourseType = courseType;
+    }
+
+    public void SetStudentType(EStudentType studentType)
+    {
+        StudentType = studentType;
     }
 }

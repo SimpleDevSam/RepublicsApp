@@ -1,4 +1,4 @@
-using DiscountContext.Application.UseCases.Republic.Create;
+using DiscountContext.Application.UseCases;
 
 namespace DiscountContext.Test.Commands
 {

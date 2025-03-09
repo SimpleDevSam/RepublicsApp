@@ -33,12 +33,12 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand ,CommandResult<R
             return new CommandResult<RegisterResponse>(null, (int)StatusCodes.NotFound, "Invalid Credentials");
         }
 
-        var userRoles = await _userManager.GetRolesAsync(user);
+        //var userRoles = await _userManager.GetRolesAsync(user);
 
         var userToService = new UserEmailRoles
         {
             UserEmail = user.Email,
-            Roles = userRoles.ToArray()
+            //Roles = userRoles.ToArray()
         };
 
         var token = TokenService.GenerateToken(userToService);

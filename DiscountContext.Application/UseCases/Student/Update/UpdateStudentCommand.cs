@@ -9,32 +9,32 @@ namespace DiscountContext.Domain.UseCases.UpdateStudent
 {
     public class UpdateStudentCommand : Notifiable<Notification>, ICommand<ICommandResult<Student>>
     {
-        public UpdateStudentCommand(string firstName, string lastName, string bornDate, string userName, string password, string email)
+        public UpdateStudentCommand(Guid studentId, string? courseType, string? studentType, string? city, string? state, string? country, Guid? republicId = null)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            BornDate = bornDate;
-            UserName = userName;
-            Password = password;
-            Email = email;
+            StudentId = studentId;
+            CourseType = courseType;
+            RepublicId = republicId;
+            StudentType = studentType;
+            City = city;
+            State = state;
+            Country = country;
+
         }
 
         public Guid StudentId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string BornDate { get; set; }
-        public string UserName { get; private set; }
-        public string Password { get; private set; }
-        public string Email { get; private set; }
+        public Guid? RepublicId { get; set; }
+        public string CourseType { get; set; }
+        public string StudentType { get; set; }
+        public string City { get; private set; }
+        public string State { get; private set; }
+        public string Country { get; private set; }
+
 
         public void Validate()
         {
             AddNotifications(new Contract<UpdateStudentCommand>()
                 .Requires()
-                .IsNotEmpty(StudentId, "Student.StudentId", "Student ID cannot be empty")
-                .IsNotNullOrEmpty(FirstName, "Student.FirstName", "First name cannot be null or empty")
-                .IsNotNullOrEmpty(LastName, "Student.LastName", "Last name cannot be null or empty")
-                .IsNotNullOrEmpty(BornDate, "Student.BornDate", "Birthdate cannot be null or empty")
+                .AreNotEquals(StudentId, Guid.Empty, "Student.Id", "Student id cannot be null or empty")
             );
         }
     }

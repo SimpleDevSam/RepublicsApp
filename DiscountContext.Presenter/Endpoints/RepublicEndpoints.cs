@@ -1,6 +1,4 @@
-﻿using DiscountContext.Application.UseCases.Republic;
-using DiscountContext.Application.UseCases.Republic.Create;
-using DiscountContext.Application.UseCases.Republic.Delete;
+﻿using DiscountContext.Application.UseCases;
 using DiscountContext.Presenter.Abstractions;
 using MediatR;
 

@@ -3,7 +3,7 @@ using Flunt.Notifications;
 using Flunt.Validations;
 
 
-namespace DiscountContext.Application.UseCases.Republic
+namespace DiscountContext.Application.UseCases
 {
     public class GetRepublicQuery : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Republic>>
     {

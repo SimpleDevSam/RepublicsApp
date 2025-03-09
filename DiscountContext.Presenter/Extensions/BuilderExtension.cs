@@ -71,7 +71,6 @@ public static class BuilderExtension
     public static void AddIdentity(this WebApplicationBuilder builder)
     {
         builder.Services.AddIdentityCore<User>()
-            .AddRoles<IdentityRole<long>>()
             .AddEntityFrameworkStores<DiscountDbContext>();
     }
 

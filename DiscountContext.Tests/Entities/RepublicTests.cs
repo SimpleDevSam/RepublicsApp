@@ -1,5 +1,6 @@
 using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.ValueObjects;
+using DiscountContext.Domain.Enums;
 
 
 namespace DiscountContext.Test.Entities
@@ -10,32 +11,32 @@ namespace DiscountContext.Test.Entities
         private Republic CreateValidRepublic()
         {
             var name = "Valid Republic Name";
-            var address = new Address("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052");
+            var address = new RepublicAddress("Main Street", "123", "Centro", "Montes Claros", "MG", "Brasil", "394001-052");
 
             return new Republic(name, address);
         }
 
-        private Student CreateValidStudent()
+        private Student CreateValidStudent(Guid republicId)
         {
-            var name = new Name("John", "Doe");
-            var birthDate = new BirthDate(new DateTime(2000, 1, 1));
+            var address = new StudentAddress("Montes Claros", "MG", "Brasil");
 
-            return new Student(name, birthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
+            return new Student(Guid.NewGuid(), address, ECoursesType.Engineering, EStudentType.Veteran);
         }
 
         private Student CreateInvalidStudent()
         {
             var invalidName = new Name("", ""); 
-            var invalidBirthDate = new BirthDate(DateTime.Now.AddYears(1)); 
+            var invalidBirthDate = new BirthDate(DateTime.Now.AddYears(1));
+            var address = new StudentAddress("", "", "");
 
-            return new Student(invalidName, invalidBirthDate, "samuca123", "samuekl@gmail.com", "samuelufop12");
+            return new Student(Guid.Empty, address, ECoursesType.Engineering, EStudentType.Veteran);
         }
 
         [TestMethod]
         public void ShouldAddStudentSuccessfully()
         {
             var republic = CreateValidRepublic();
-            var student = CreateValidStudent();
+            var student = CreateValidStudent(republic.Id);
 
             republic.AddStudent(student);
 

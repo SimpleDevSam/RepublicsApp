@@ -11,7 +11,7 @@ public class RegisterCommand : IRequest<ICommandResult<Domain.Entities.User>>
     public string UserName { get; set; }
     public string Password { get; set; }
     public DateTime BirthDate { get; set; }
-    public EUserType UserType { get; set; }
+    public EStudentType UserType { get; set; }
     public List<string>? Roles { get; set; }
 }
 

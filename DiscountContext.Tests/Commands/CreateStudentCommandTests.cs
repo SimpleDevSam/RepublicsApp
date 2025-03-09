@@ -1,4 +1,6 @@
+using System;
 using DiscountContext.Domain.UseCases.CreateStudent;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DiscountContext.Test.Commands
 {
@@ -6,47 +8,191 @@ namespace DiscountContext.Test.Commands
     public class CreateStudentCommandTests
     {
         [TestMethod]
-        public void ShouldReturnErrorWhenFirstNameIsNullOrEmpty()
+        public void ShouldReturnErrorWhenUserIdIsEmpty()
         {
-            var studentCommand = new CreateStudentCommand(null, "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
-
-            studentCommand = new CreateStudentCommand("", "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
+            var command = new CreateStudentCommand(
+                Guid.Empty,
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when user id is empty.");
         }
 
         [TestMethod]
-        public void ShouldReturnErrorWhenLastNameIsNullOrEmpty()
+        public void ShouldReturnErrorWhenRepublicIdIsEmpty()
         {
-            var studentCommand = new CreateStudentCommand("John", null, "02/01/1998", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
-
-            studentCommand = new CreateStudentCommand("John", "", "02/01/1998", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.Empty,
+                "City",
+                "State",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when republic id is empty.");
         }
 
         [TestMethod]
-        public void ShouldReturnErrorWhenBornDateIsNullOrEmpty()
+        public void ShouldReturnErrorWhenCityIsNullOrEmpty()
         {
-            var studentCommand = new CreateStudentCommand("John", "Maia", null, "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                null,
+                "State",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when city is null.");
 
-            studentCommand = new CreateStudentCommand("John", "Maia", "", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsFalse(studentCommand.IsValid);
+            command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "",
+                "State",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when city is empty.");
+        }
+
+        [TestMethod]
+        public void ShouldReturnErrorWhenStateIsNullOrEmpty()
+        {
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                null,
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when state is null.");
+
+            command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when state is empty.");
+        }
+
+        [TestMethod]
+        public void ShouldReturnErrorWhenCountryIsNullOrEmpty()
+        {
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                null,
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when country is null.");
+
+            command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when country is empty.");
+        }
+
+        [TestMethod]
+        public void ShouldReturnErrorWhenCourseTypeIsNullOrEmpty()
+        {
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                null,
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when course type is null.");
+
+            command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                "",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when course type is empty.");
+        }
+
+        [TestMethod]
+        public void ShouldReturnErrorWhenStudentTypeIsNullOrEmpty()
+        {
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                "Freshman",
+                null
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when student type is null.");
+
+            command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                "Freshman",
+                ""
+            );
+            command.Validate();
+            Assert.IsFalse(command.IsValid, "Command should be invalid when student type is empty.");
         }
 
         [TestMethod]
         public void ShouldBeValidWhenAllPropertiesAreValid()
         {
-            var studentCommand = new CreateStudentCommand("John", "Maia", "02/01/1998", "samuca123", "asdads", "s@m.com");
-            studentCommand.Validate();
-            Assert.IsTrue(studentCommand.IsValid);
+            var command = new CreateStudentCommand(
+                Guid.NewGuid(),
+                Guid.NewGuid(),
+                "City",
+                "State",
+                "Country",
+                "Freshman",
+                "Regular"
+            );
+            command.Validate();
+            Assert.IsTrue(command.IsValid, "Command should be valid when all properties are provided correctly.");
         }
     }
 }

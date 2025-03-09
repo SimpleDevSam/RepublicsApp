@@ -2,9 +2,6 @@ using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DiscountContext.Infrastructure.Repositories
 {
@@ -52,7 +49,9 @@ namespace DiscountContext.Infrastructure.Repositories
 
         public async Task<IList<Republic>> GetAllAsync()
         {
-            return await _context.Republics.ToListAsync();
+            return await _context.Republics
+                .Include(r => r.Students)
+                .ToListAsync();
         }
     }
 }

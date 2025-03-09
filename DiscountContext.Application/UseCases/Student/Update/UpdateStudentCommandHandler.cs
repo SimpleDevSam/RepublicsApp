@@ -1,7 +1,9 @@
-﻿using DiscountContext.Domain.Entities;
+﻿using DiscountContext.Application.UseCases;
+using DiscountContext.Domain.Entities;
+using DiscountContext.Domain.Enums;
 using DiscountContext.Domain.Repositories;
-using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.Extensions;
 using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using MediatR;
@@ -34,14 +36,19 @@ namespace DiscountContext.Domain.UseCases.UpdateStudent
                 return new CommandResult<Student>(null, (int)StatusCodes.NotFound, "Student not found");
             }
 
-            var name = new Name(command.FirstName, command.LastName);
-            var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
-            var studentToBeUpdated = new Student(name, birthDate, command.UserName, command.Password, command.Email);
+            var teste = command.CourseType.ToEnum<ECoursesType>();
 
-            student.UpdateStudent(studentToBeUpdated);
+            StudentMapper.MapUpdateStudentCommandToStudent(command, student);
+
+            if (!student.IsValid)
+            {
+                return new CommandResult<Student>(null, (int)StatusCodes.BadRequest, "Invalid student data after update");
+            }
+
             await _studentRepository.UpdateAsync(student);
 
             return new CommandResult<Student>(student, (int)StatusCodes.OK, "Student updated successfully");
         }
+
     }
 }

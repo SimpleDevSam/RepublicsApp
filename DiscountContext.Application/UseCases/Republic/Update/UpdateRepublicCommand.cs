@@ -3,7 +3,7 @@ using Flunt.Notifications;
 using Flunt.Validations;
 using System.Text.Json.Serialization;
 
-namespace DiscountContext.Application.UseCases.Republic
+namespace DiscountContext.Application.UseCases
 {
     public class UpdateRepublicCommand : Notifiable<Notification>, ICommand<ICommandResult<Domain.Entities.Republic>>
     {

@@ -1,4 +1,4 @@
-﻿using DiscountContext.Application.UseCases.Republic.Delete;
+﻿using DiscountContext.Application.UseCases;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Shared.Commands;
 using DiscountContext.Shared.StatusCodes;
@@ -6,7 +6,7 @@ using Flunt.Notifications;
 using MediatR;
 using PaymentContext.Domain.Commands;
 
-namespace DiscountContext.Domain.UseCases.Republic
+namespace DiscountContext.Domain.UseCases
 {
     public class DeleteRepublicHandler : Notifiable<Notification>, IRequestHandler<DeleteRepublicCommand, ICommandResult>
     {

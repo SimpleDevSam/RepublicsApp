@@ -1,4 +1,5 @@
-﻿using DiscountContext.Domain.UseCases.CreateStudent;
+﻿using DiscountContext.Application.UseCases;
+using DiscountContext.Domain.UseCases.CreateStudent;
 using DiscountContext.Domain.UseCases.DeleteStudent;
 using DiscountContext.Domain.UseCases.GetAllStudents;
 using DiscountContext.Domain.UseCases.GetStudent;
@@ -73,6 +74,18 @@ namespace DiscountContext.Presenter.Endpoints
             })
             .WithName("Update Student")
             .WithOpenApi();
+
+            student.MapPatch("/UpdateStudentsRepublic", async (Guid republicId, UpdateStudentsRepublicCommand command, IMediator mediator) =>
+            {
+                command.RepublicId = republicId;
+                var response = await mediator.Send(command);
+                if (!response.Success && response.Code == 400)
+                    return Results.BadRequest(response);
+
+                return Results.Ok(response);
+            })
+           .WithName("Update Students Republic")
+           .WithOpenApi();
         }
     }
 }

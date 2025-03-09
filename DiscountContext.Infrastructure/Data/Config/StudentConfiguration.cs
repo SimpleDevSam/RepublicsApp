@@ -10,41 +10,35 @@ namespace DiscountContext.Infrastructure.Data.Configurations
         {
             builder.HasKey(s => s.Id);
 
-            builder.OwnsOne(s => s.Name, n =>
-            {
-                n.Ignore(n => n.Notifications);
-
-                n.Property(p => p.FirstName)
-                 .IsRequired()
-                 .HasMaxLength(50);
-
-                n.Property(p => p.LastName)
-                 .IsRequired()
-                 .HasMaxLength(50);
-            });
-
-            builder.OwnsOne(s => s.BirthDate, b =>
-            {
-                b.Property(p => p.BornDate)
-                 .IsRequired();
-            });
-
-            builder.HasOne(s => s.Republic)
+            builder.HasOne<Republic>()
                    .WithMany(r => r.Students)
-                   .HasForeignKey("RepublicId")
+                   .HasForeignKey(s => s.RepublicId)
+                   .IsRequired(false)   
                    .OnDelete(DeleteBehavior.SetNull);
 
-            builder.Property(s => s.Email)
-                   .IsRequired()
-                   .HasMaxLength(100);
 
-            builder.Property(s => s.Password)
-                   .IsRequired()
-                   .HasMaxLength(100);
+            builder.Property(s => s.StudentType)
+                   .IsRequired();
 
-            builder.Property(s => s.Username)
-                   .IsRequired()
-                   .HasMaxLength(50);
+            builder.OwnsOne(s => s.Address, a =>
+            {
+                a.Ignore(a => a.Notifications);
+
+                a.Property(p => p.City)
+                 .IsRequired()
+                 .HasMaxLength(150);
+
+                a.Property(p => p.Country)
+                 .IsRequired()
+                 .HasMaxLength(50);
+
+                a.Property(p => p.State)
+                 .IsRequired()
+                 .HasMaxLength(100);
+            });
+
+            builder.Property(s => s.CourseType)
+                   .IsRequired();
         }
     }
 }

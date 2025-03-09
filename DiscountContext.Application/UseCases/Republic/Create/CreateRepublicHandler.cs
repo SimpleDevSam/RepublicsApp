@@ -1,4 +1,3 @@
-using DiscountContext.Application.UseCases.Republic.Create;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
 using DiscountContext.Shared.Commands;
@@ -8,7 +7,7 @@ using Flunt.Validations;
 using PaymentContext.Domain.Commands;
 using MediatR;
 
-namespace DiscountContext.Application.UseCases.Create
+namespace DiscountContext.Application.UseCases
 {
     public class CreateRepublicHandler : Notifiable<Notification>, IRequestHandler<CreateRepublicCommand, ICommandResult>
     {
@@ -29,7 +28,7 @@ namespace DiscountContext.Application.UseCases.Create
                 return new CommandResult<Domain.Entities.Republic>(null, (int)StatusCodes.BadRequest, "Invalid command data");
             }
 
-            var address = new Address(
+            var address = new RepublicAddress(
                 command.Street,
                 command.Number,
                 command.Neighbourhood,

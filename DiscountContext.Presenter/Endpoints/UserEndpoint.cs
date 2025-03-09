@@ -16,9 +16,9 @@ namespace DiscountContext.Presenter.Endpoints
                 var response = await mediator.Send(command);
 
                 if (!response.Success && response.Code == 400)
-                    return Results.BadRequest(response);
+                    return Results.BadRequest(response.Message);
 
-                return Results.Ok(response);
+                return Results.Ok(response.Message);
             })
             .WithName("Register User")
             .WithOpenApi();
@@ -28,9 +28,9 @@ namespace DiscountContext.Presenter.Endpoints
                 var response = await mediator.Send(command);
 
                 if (!response.Success && response.Code == 400)
-                    return Results.BadRequest(response);
+                    return Results.BadRequest(response.Message);
                 if (!response.Success && response.Code == 404)
-                    return Results.NotFound(response);
+                    return Results.NotFound(response.Message);
 
                 return Results.Ok(response);
             })

@@ -1,40 +1,40 @@
 using DiscountContext.Shared.Commands;
 using Flunt.Notifications;
 using Flunt.Validations;
+using System;
 
 namespace DiscountContext.Domain.UseCases.CreateStudent;
 
 public class CreateStudentCommand : Notifiable<Notification>, ICommand<ICommandResult>
 {
-    public CreateStudentCommand(string firstName, string lastName, string bornDate, string userName, string password, string email)
+    public CreateStudentCommand(Guid userId, Guid republicId, string city, string state, string country, string courseType, string studentType)
     {
-        FirstName = firstName;
-        LastName = lastName;
-        BornDate = bornDate;
-        UserName = userName;
-        Password = password;
-        Email = email;
+        UserId = userId;
+        City = city;
+        State = state;
+        Country = country;
+        CourseType = courseType;
+        StudentType = studentType;
+        RepublicId = republicId;
     }
 
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string BornDate { get; private set; }
-    public string UserName { get; private set; }
-    public string Password { get; private set; }
-    public string Email { get; private set; }
+    public Guid UserId { get; private set; }
+    public Guid RepublicId { get; private set; }
+    public string City { get; private set; }
+    public string State { get; private set; }
+    public string Country { get; private set; }
+    public string CourseType { get; private set; }
+    public string StudentType { get; private set; }
 
     public void Validate()
     {
         AddNotifications(new Contract<CreateStudentCommand>()
             .Requires()
-            .IsNotNullOrEmpty(FirstName, "Student.FirstName", "First namme cannot be null")
-            .IsNotNullOrEmpty(LastName, "Student.LastName", "Last name cannot be null")
-            .IsNotNullOrEmpty(BornDate, "Student.BirthDate", "Birthdate cannot be null")
-            .IsNotNullOrEmpty(UserName, "Student.UserName", "UserName cannot be null")
-            .IsNotNullOrEmpty(Password, "Student.Password", "Password cannot be null")
-            .IsNotNullOrEmpty(Email, "Student.Email", "Email cannot be null")
-            .IsEmail(Email,"Student.Email", "Email bust be a valid one")
-            );
+            .AreNotEquals(UserId, Guid.Empty,"Student.UserId", "User id cannot be null or empty")
+            .IsNotNullOrEmpty(State, "Student.State", "State cannot be null or empty")
+            .IsNotNullOrEmpty(Country, "Student.Country", "Country cannot be null or empty")
+            .IsNotNullOrEmpty(CourseType, "Student.CourseType", "Course type cannot be null or empty")
+            .IsNotNullOrEmpty(StudentType, "Student.StudentType", "Student type cannot be null or empty")
+        );
     }
-
 }

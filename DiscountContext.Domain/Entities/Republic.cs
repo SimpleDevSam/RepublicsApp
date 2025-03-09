@@ -10,7 +10,7 @@ public class Republic : Entity
     {
         Students = new List<Student>();
     }
-    public Republic(string name, Address address)
+    public Republic(string name, RepublicAddress address)
     {
         Name = name;
         Address = address;
@@ -25,7 +25,7 @@ public class Republic : Entity
 
     public string Name { get; private set; }
     public bool IsOnDiscount { get; private set; }
-    public Address Address  { get; private set; }
+    public RepublicAddress Address  { get; private set; }
     public IList<Student> Students { get; private set; }
 
 
@@ -35,7 +35,7 @@ public class Republic : Entity
                 Students.Add(student);
         }   
 
-    public Republic UpdateRepublic (Republic republic)
+    public Republic Update (Republic republic)
     {
         Name = republic.Name;
         Address = republic.Address;

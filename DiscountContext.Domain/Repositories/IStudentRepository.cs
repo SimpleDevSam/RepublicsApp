@@ -8,6 +8,6 @@ public interface IStudentRepository
     Task DeleteAsync(Guid studentId);
     Task<Student> UpdateAsync(Student student);
     Task<Student> GetAsync(Guid studentId);
-
+    Task UpdateStudentsRepublicIdAsync(IEnumerable<Guid> studentIds, Guid republicId);
     Task<IList<Student>> GetAllAsync();
 }

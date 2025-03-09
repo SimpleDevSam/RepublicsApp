@@ -3,7 +3,7 @@ using Flunt.Notifications;
 using Flunt.Validations;
 
 
-namespace DiscountContext.Application.UseCases.Republic.Create;
+namespace DiscountContext.Application.UseCases;
 
     public class CreateRepublicCommand : Notifiable<Notification>, ICommand<ICommandResult>
     {

@@ -2,9 +2,7 @@ using DiscountContext.Domain.Entities;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace DiscountContext.Infrastructure.Repositories
 {
@@ -53,6 +51,16 @@ namespace DiscountContext.Infrastructure.Repositories
         public async Task<IList<Student>> GetAllAsync()
         {
             return await _context.Students.ToListAsync();
+        }
+
+        public async Task UpdateStudentsRepublicIdAsync(IEnumerable<Guid> studentIds, Guid republicId)
+        {
+            var students = await _context.Students.Where(s => studentIds.Contains(s.Id)).ToListAsync();
+            foreach (var student in students)
+            {
+                student.SetRepublicId(republicId);
+            }
+            await _context.SaveChangesAsync();
         }
     }
 }

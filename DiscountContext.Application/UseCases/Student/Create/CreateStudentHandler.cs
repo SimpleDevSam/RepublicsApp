@@ -1,7 +1,10 @@
 using DiscountContext.Domain.Entities;
+using DiscountContext.Domain.Enums;
 using DiscountContext.Domain.Repositories;
 using DiscountContext.Domain.ValueObjects;
+using DiscountContext.Shared;
 using DiscountContext.Shared.Commands;
+using DiscountContext.Shared.Extensions;
 using DiscountContext.Shared.StatusCodes;
 using Flunt.Notifications;
 using Flunt.Validations;
@@ -30,16 +33,15 @@ namespace DiscountContext.Domain.UseCases.CreateStudent
                 return new CommandResult<Student>(null, (int)StatusCodes.BadRequest, "Invalid command data");
             }
 
-            var name = new Name(command.FirstName, command.LastName);
-            var birthDate = new BirthDate(DateTime.Parse(command.BornDate));
+            var address = new StudentAddress(
+                command.City,
+                command.State,
+                command.Country);
 
-            var student = new Student(
-                name,
-                birthDate,
-                command.UserName,
-                command.Password,
-                command.Email
-            );
+            var student = new Student();
+            student.SetAddress(address);
+
+            GenericMapper.MapNonNullProperties(command, student);
 
             await _studentRepository.CreateAsync(student);
 

@@ -12,16 +12,13 @@ namespace DiscountContext.Infrastructure
     {
         public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // Add DbContext
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+
             services.AddDbContext<DiscountDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-
-            // Add Repositories
+                options.UseSqlServer(connectionString));
+                
             services.AddScoped<IStudentRepository, StudentRepository>();
-            services.AddScoped<IRepublicRepository, RepublicRepository>(); 
-
-
-            
+            services.AddScoped<IRepublicRepository, RepublicRepository>();  
         }
 
     }

@@ -4,7 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>74c0bff3-7c42-4f9c-871d-1ffbdaa1ecc2</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DiscountContext.Presenter.http" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Mediatr" Version="12.4.0" />

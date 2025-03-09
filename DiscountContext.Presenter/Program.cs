@@ -2,6 +2,7 @@ using DiscountContext.Infrastructure;
 using DiscountContext.Presenter.Extensions;
 using DiscountContext.Application;
 using DiscountContext.API.Extensions;
+using DiscountContext.API.Middlewares;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,12 +18,20 @@ var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseExceptionHandler();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Baha'i Prayers API");
+    c.InjectStylesheet("/swagger/custom.css");
+    c.RoutePrefix = String.Empty;
+});
 
 app.RegisterEndpointDefinitions();
 
 
 app.Run();
+
+
+

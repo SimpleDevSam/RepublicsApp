@@ -9,5 +9,4 @@ namespace DiscountContext.Application.Objects;
 public record UserEmailRoles
 {
     public string UserEmail { get; set; }
-    public string[] Roles { get; set; }
 }

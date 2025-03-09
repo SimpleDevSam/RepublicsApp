@@ -2,7 +2,7 @@
 using Flunt.Notifications;
 
 
-namespace DiscountContext.Application.UseCases.Republic
+namespace DiscountContext.Application.UseCases
 {
     public class GetAllRepublicsQuery : Notifiable<Notification>, ICommand<ICommandResult<IList<Domain.Entities.Republic>>>
     {
