@@ -23,5 +23,13 @@ public class UpdateStudentsRepublicCommand : Notifiable<Notification>, ICommand<
             .IsGreaterThan(StudentIds.Length, 0, "StudentIds cannot be null")
             .AreNotEquals(RepublicId, Guid.Empty, "RepublicId cannot be null")
         );
+
+        foreach (var studentId in StudentIds)
+        {
+            if (studentId == Guid.Empty)
+            {
+                AddNotification("StudentIds", "One or more StudentIds are invalid (empty GUIDs are not allowed).");
+            }
+        }
     }
 }

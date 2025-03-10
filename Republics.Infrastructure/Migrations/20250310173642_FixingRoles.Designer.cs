@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Republics.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Republics.Infrastructure.Data;
 namespace DiscountContext.Infrastructure.Migrations
 {
     [DbContext(typeof(DiscountDbContext))]
-    partial class DiscountDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250310173642_FixingRoles")]
+    partial class FixingRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,17 +57,17 @@ namespace DiscountContext.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("39e4c829-1c17-4a1a-9f98-fad5cfe3d650"),
+                            Id = new Guid("42f824c2-3c24-4994-90bd-668ef96cd80d"),
                             RoleType = 1
                         },
                         new
                         {
-                            Id = new Guid("0ffa7d70-6a92-411d-94ab-e73e99744a8d"),
+                            Id = new Guid("955e5bde-b8dc-49dd-9dae-b740c62f36ef"),
                             RoleType = 2
                         });
                 });
@@ -136,6 +139,9 @@ namespace DiscountContext.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -151,22 +157,9 @@ namespace DiscountContext.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("UserRole", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UserId", "RoleId");
-
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Republics.Domain.Entities.Republic", b =>
@@ -262,38 +255,18 @@ namespace DiscountContext.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UserRole", b =>
+            modelBuilder.Entity("Republics.Domain.Entities.User", b =>
                 {
-                    b.HasOne("Republics.Domain.Entities.Role", "Role")
-                        .WithMany("UserRoles")
+                    b.HasOne("Republics.Domain.Entities.Role", null)
+                        .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("Republics.Domain.Entities.User", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Republics.Domain.Entities.Republic", b =>
                 {
                     b.Navigation("Students");
-                });
-
-            modelBuilder.Entity("Republics.Domain.Entities.Role", b =>
-                {
-                    b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("Republics.Domain.Entities.User", b =>
-                {
-                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

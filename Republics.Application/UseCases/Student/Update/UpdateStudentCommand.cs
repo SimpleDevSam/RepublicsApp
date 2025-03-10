@@ -17,16 +17,15 @@ public class UpdateStudentCommand : Notifiable<Notification>, ICommand<ICommandR
         City = city;
         State = state;
         Country = country;
-
     }
 
     public Guid StudentId { get; set; }
     public Guid? RepublicId { get; set; }
-    public string CourseType { get; set; }
-    public string StudentType { get; set; }
-    public string City { get; private set; }
-    public string State { get; private set; }
-    public string Country { get; private set; }
+    public string? CourseType { get; set; }
+    public string? StudentType { get; set; }
+    public string? City { get; private set; }
+    public string? State { get; private set; }
+    public string? Country { get; private set; }
 
 
     public void Validate()

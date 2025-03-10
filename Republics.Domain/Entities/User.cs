@@ -8,4 +8,5 @@ public class User : IdentityUser
     public DateTime BirthDate { get; set; }
 
     public EStudentType UserType { get; set; }
+    public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }
