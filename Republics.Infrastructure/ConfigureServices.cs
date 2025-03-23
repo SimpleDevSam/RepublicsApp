@@ -25,6 +25,7 @@ public static class ConfigureServices
         services.AddScoped<IStudentRepository, StudentRepository>();
         services.AddScoped<IRepublicRepository, RepublicRepository>();
         services.AddScoped<IRoleRepository, RoleRepository>();
+        services.AddScoped<IUserRoleRepository, UserRoleRepository>();
         return services;
     }
 

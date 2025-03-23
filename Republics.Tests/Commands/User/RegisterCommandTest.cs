@@ -15,7 +15,7 @@ namespace Republics.Tests.Commands
                 Password = "Abcd1234!",
                 BirthDate = DateTime.Now.AddYears(-20),
                 UserType = EStudentType.FreshMan,
-                Role = "Student"
+                Roles = ["Adm", "Basic"]
             };
         }
 
@@ -89,12 +89,12 @@ namespace Republics.Tests.Commands
         public void ShouldReturnErrorWhenRoleIsNullOrEmpty()
         {
             var command = CreateValidCommand();
-            command.Role = null;
+            command.Roles = null;
             command.Validate();
             Assert.IsFalse(command.IsValid);
 
             command = CreateValidCommand();
-            command.Role = "";
+            command.Roles = [];
             command.Validate();
             Assert.IsFalse(command.IsValid);
         }
@@ -104,6 +104,7 @@ namespace Republics.Tests.Commands
         {
             var command = CreateValidCommand();
             command.Validate();
+            
             Assert.IsTrue(command.IsValid);
         }
     }

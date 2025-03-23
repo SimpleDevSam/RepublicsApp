@@ -14,11 +14,13 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ICommandR
 {
     private readonly UserManager<User> _userManager;
     private readonly IRoleRepository _roleRepository;
+    private readonly IUserRoleRepository _userRoleRepository;
 
-    public RegisterCommandHandler(UserManager<Domain.Entities.User> userManager, IRoleRepository roleRepository)
+    public RegisterCommandHandler(UserManager<User> userManager, IRoleRepository roleRepository, IUserRoleRepository userRoleRepository)
     {
         _userManager = userManager;
         _roleRepository = roleRepository;
+        _userRoleRepository = userRoleRepository;
     }
 
     public async Task<ICommandResult<User>> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -30,11 +32,18 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ICommandR
             return new CommandResult<User>(null, (int)StatusCodes.BadRequest, "Invalid command data");
         }
 
-        var roleId = await _roleRepository.GetRoleId(command.Role.ToEnum<ERoles>()!.Value);
+        var rolesIds = new List<Guid>();
 
-        if (roleId == Guid.Empty)
+        foreach (var role in command.Roles)
         {
-            return new CommandResult<User>(null, (int)StatusCodes.BadRequest, $"Role {command.Role.ToEnum<ERoles>()!.Value} does not exist");
+            var roleId = await _roleRepository.GetRoleId(role.ToUpper().ToEnum<ERoles>()!.Value);
+
+            if (roleId == Guid.Empty)
+            {
+                return new CommandResult<User>(null, (int)StatusCodes.BadRequest, $"Role {role.ToEnum<ERoles>()!.Value} does not exist");
+            }
+
+            rolesIds.Add(roleId);
         }
 
         var user = new User
@@ -52,6 +61,17 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ICommandR
             return new CommandResult<User>(null, (int)StatusCodes.BadRequest, "User was not created");
         };
 
+        var userId = await _userManager.GetUserIdAsync(user);
+
+        var userRoles = new List<UserRole>();
+
+        foreach (var roleId in rolesIds)
+        {
+            var userRole = new UserRole(userId, roleId);
+            userRoles.Add(userRole);
+        }
+
+        await _userRoleRepository.AddUserRoles(userRoles.ToArray());
 
         return new CommandResult<User>(user, (int)StatusCodes.OK, "User created successfully");
     }

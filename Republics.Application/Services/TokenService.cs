@@ -13,16 +13,19 @@ public static class TokenService
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes("asdasdad12sa123131313213131221asda-fadsf");
 
-        //// Create claims for roles
-        //var roleClaims = user.Roles.Select(role => new Claim(ClaimTypes.Role, role)).ToList();
+        var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Email, user.UserEmail)
+    };
+
+        foreach (var role in user.Roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
+        }
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.Email, user.UserEmail),
-                //new Claim(ClaimTypes.Role, string.Join(",", user.Roles))
-            }),
+            Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };

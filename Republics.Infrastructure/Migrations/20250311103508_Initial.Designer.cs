@@ -9,11 +9,11 @@ using Republics.Infrastructure.Data;
 
 #nullable disable
 
-namespace DiscountContext.Infrastructure.Migrations
+namespace Republics.Infrastructure.Migrations
 {
     [DbContext(typeof(DiscountDbContext))]
-    [Migration("20250310172916_AddingRoles")]
-    partial class AddingRoles
+    [Migration("20250311103508_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,17 +57,17 @@ namespace DiscountContext.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role");
+                    b.ToTable("Roles");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1c9a4086-d224-4738-8ee2-6bdf8f12ee3a"),
+                            Id = new Guid("fd5a2717-de70-4739-b7b6-4795265ea0b6"),
                             RoleType = 1
                         },
                         new
                         {
-                            Id = new Guid("a4f2c8d7-1d60-4f6f-825b-db6fa4b8b9f8"),
+                            Id = new Guid("8792c9e7-bb35-4800-8fca-7da5fb4aa2c4"),
                             RoleType = 2
                         });
                 });
@@ -139,12 +139,6 @@ namespace DiscountContext.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoleId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -160,11 +154,22 @@ namespace DiscountContext.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("UserRole", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("RoleId1");
-
-                    b.ToTable("User");
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("Republics.Domain.Entities.Republic", b =>
@@ -260,26 +265,38 @@ namespace DiscountContext.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Republics.Domain.Entities.User", b =>
+            modelBuilder.Entity("UserRole", b =>
                 {
-                    b.HasOne("Republics.Domain.Entities.Role", null)
-                        .WithMany()
+                    b.HasOne("Republics.Domain.Entities.Role", "Role")
+                        .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Republics.Domain.Entities.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId1")
+                    b.HasOne("Republics.Domain.Entities.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Republics.Domain.Entities.Republic", b =>
                 {
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("Republics.Domain.Entities.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("Republics.Domain.Entities.User", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

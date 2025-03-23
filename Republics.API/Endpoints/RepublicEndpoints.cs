@@ -22,7 +22,8 @@ namespace Republics.API.Endpoints
                 return Results.Ok(response);
             })
             .WithName("GetAll Republics")
-            .WithOpenApi();
+            .WithOpenApi()
+            .RequireAuthorization("admin");
 
             republic.MapGet("/{id}", async (Guid id, IMediator mediator) =>
             {

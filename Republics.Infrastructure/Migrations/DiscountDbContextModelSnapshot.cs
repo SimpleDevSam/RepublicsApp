@@ -8,7 +8,7 @@ using Republics.Infrastructure.Data;
 
 #nullable disable
 
-namespace DiscountContext.Infrastructure.Migrations
+namespace Republics.Infrastructure.Migrations
 {
     [DbContext(typeof(DiscountDbContext))]
     partial class DiscountDbContextModelSnapshot : ModelSnapshot
@@ -59,12 +59,12 @@ namespace DiscountContext.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("39e4c829-1c17-4a1a-9f98-fad5cfe3d650"),
+                            Id = new Guid("fd5a2717-de70-4739-b7b6-4795265ea0b6"),
                             RoleType = 1
                         },
                         new
                         {
-                            Id = new Guid("0ffa7d70-6a92-411d-94ab-e73e99744a8d"),
+                            Id = new Guid("8792c9e7-bb35-4800-8fca-7da5fb4aa2c4"),
                             RoleType = 2
                         });
                 });

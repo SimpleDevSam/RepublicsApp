@@ -14,7 +14,7 @@ public class RegisterCommand : Notifiable<Notification>, IRequest<ICommandResult
     public string Password { get; set; }
     public DateTime BirthDate { get; set; }
     public EStudentType UserType { get; set; }
-    public string Role { get; set; }
+    public string[] Roles { get; set; }
 
     public void Validate()
     {
@@ -25,10 +25,15 @@ public class RegisterCommand : Notifiable<Notification>, IRequest<ICommandResult
             .IsNotNullOrEmpty(Password, "User.Email", "UserEmai cannot be null or empty")
             .IsNotNull(BirthDate, "User.Email", "BrithDate cannot be null or empty")
             .IsNotNull(UserType, "User.Email", "UserType cannot be null or empty")
-            .IsNotNullOrEmpty(Role, "User.Role", "UserRole cannot be null or empty")
-            .Matches(Password, "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{9,}$", "User.Password", "Password must be higher than 8 characters and contain at least one letter, one number, and one special symbol")
+            .IsNotNull(Roles, "User.Roles", "Roles cannot be null")
+            .Matches(Password, "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[^A-Za-z0-9]).{9,}$", "User.Password", "Password must be higher than 8 characters and contain at least one letter, one number, and one special symbol"));
 
-        );
+        if (Roles != null)
+        {
+            AddNotifications(new Contract<RegisterCommand>()
+                .Requires()
+                .IsGreaterThan(Roles.Length, 0, "User.Roles", "Mus have at least one role"));
+        };
     }
 }
 

@@ -1,4 +1,3 @@
-using DiscountContext.Infrastructure;
 using Republics.API.Middlewares;
 using Republics.API.Extensions;
 using Republics.Application;
@@ -12,6 +11,9 @@ builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 builder.AddIdentity();
 builder.AddSecurity();
+
+builder.Services.AddAuthorizationBuilder()
+  .AddPolicy("admin", policy => policy.RequireRole("ADM"));
 
 
 var app = builder.Build();
